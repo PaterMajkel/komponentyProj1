@@ -5,14 +5,31 @@ import {Home} from './Home'
 import {Seances} from './Seances'
 import { Seance } from './Seance'
 import {Movies} from './Movies'
+import { Button } from 'react-bootstrap';
+import "bootstrap/dist/css/bootstrap.css";
 function App() {
+  //document.body.style.backgroundColor = "rgb(38, 39, 37)";
   return (
     <div>
-      <navbar>
-        <span><Link to='/'>Home</Link></span>
-          <Link to='/seances'><span>Seances</span></Link>
-          <Link to='/movies'><span>Movies</span></Link>
-      </navbar>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/"> Kino w pyte</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/seances">Seances</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/movies">Movies</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='seances' element={<Seances/>}/>
@@ -20,6 +37,7 @@ function App() {
       <Route path='movies' element={<Movies/>}></Route>
     </Routes>
     </div>
+
   );
 }
 
