@@ -1,9 +1,9 @@
 import {useParams} from 'react-router-dom'
-export function Seance(){
+export function SeanceIndex(params){
     let {seanceId} = useParams();
     return( 
     <div>
-        <p>Hello from seance ID: {seanceId}</p>
+        <p>i am the seance nr {seanceId}</p>
     </div>
     )
 }
