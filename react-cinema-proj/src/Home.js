@@ -1,5 +1,8 @@
+import './App.css';
+
 export function Home(){
+    
     return(
-        <p>bruh</p>
+        <div class="welcome">Welcome to Erebus cinema!</div>
     )
 }

@@ -87,3 +87,10 @@ nav a:hover::before {
     transform: rotate(360deg);
   }
 }
+.welcome{
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 50px;
+  color: darkslategray;
+  align-items: center;
+  text-align: center;
+}
