@@ -10,6 +10,9 @@ import Axios from 'axios'
 import {Movies} from './Movies/Movies'
 import {MoviesHome} from './Movies/MoviesHome'
 import {MovieIndex} from './Movies/MovieIndex'
+import {ReservationHome} from './Rooms/ReservationHome'
+import {Reservation60} from './Rooms/Reservation60'
+import {Reservation90} from './Rooms/Reservation90'
 import {getSeances, getMovies} from './ApiCalls'
 import { connect, Provider } from 'react-redux'; 
 function App() {
@@ -30,13 +33,20 @@ function App() {
     console.log(seances)
   }
   return (
-    <div>
-      <navbar>
-        <span><Link to='/'>Home</Link></span>
-          <Link to='/seances'><span>Seances</span></Link>
-          <Link to='/movies'><span>Movies</span></Link>
-          <button onClick={() => showSeances()}>bruh</button>
-      </navbar>
+    <div className="background">
+      <div className="body">
+          <nav>
+            <ul>
+
+              <li><a class="nav-link" href="/">Home</a></li>
+              <li><a class="nav-link" href="/seances">Seances</a></li>
+              <li><a class="nav-link" href="/movies">Movies</a></li>
+              <li><a class="nav-link" href="/reservation60">Reservation60 /TODO</a></li>
+              <li><a class="nav-link" href="/reservation90">Reservation90 /TODO</a></li>
+              <button onClick={() => showSeances()}>bruh</button>
+            </ul>
+          </nav>
+        </div>
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='seances' element={<SeancesHome/>}>
@@ -48,6 +58,8 @@ function App() {
         <Route path='all' element={<Movies movies={movies}/>}/>
         <Route path=':movieId' element={<MovieIndex/>}/>
       </Route>
+      <Route path='reservation60' element={<Reservation60/>}/>
+      <Route path='reservation90' element={<Reservation90/>}/>
     </Routes>
     </div>
   );

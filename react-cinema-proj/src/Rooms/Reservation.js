@@ -1,7 +1,6 @@
 import {Chip} from '@mui/material/Chip'
 import Stack from '@mui/material/Stack';
-import React, {useState} from 'react'
-import {useEffect} from 'react-router-dom'
+import React, {useState, useEffect} from 'react'
 export function Reservation(params){
     const [chairs, setChairs] = useState([])
     const [selected, setSelected]= useState([])
