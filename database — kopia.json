@@ -1,0 +1,31 @@
+{
+    "Sala": [
+      { "id": 1, "nr_sali": "1", "ilosc_miejsc": "90" },
+      { "id": 2, "nr_sali": "2", "ilosc_miejsc": "60" },
+      { "id": 3, "nr_sali": "3", "ilosc_miejsc": "60" }
+    ],
+    
+    "Seans": [
+      { "id": 1, "data": "26.11.2021", "godzina": "18.30", "salaID": 1 ,"filmID":1,"liczba_sprzedanych_biletow":"5","liczba_dostepnych_miejsc":"85" },
+      { "id": 2, "data":  "30.11.2021", "godzina": "15.30", "salaID": 2 ,"filmID":3,"liczba_sprzedanych_biletow":"0","liczba_dostepnych_miejsc":"60" },
+      { "id": 3, "data":  "30.11.2021", "godzina": "17.30", "salaID": 3 ,"filmID":3,"liczba_sprzedanych_biletow":"0","liczba_dostepnych_miejsc":"60" },
+      { "id": 4, "data": "31.12.2021", "godzina": "20.15", "salaID": 1 ,"filmID":2,"liczba_sprzedanych_biletow":"0","liczba_dostepnych_miejsc":"90" }
+     
+    ],
+    "Seans_zajete": [{ "biletID":1,"seansID":1},
+        { "biletID":2,"seansID":1},
+        { "biletID":3,"seansID":1},
+        { "biletID":4,"seansID":1},
+        { "biletID":5,"seansID":1}
+    ],
+    "Film": [{"id":1, "tytul": "Dom Gucci","czas_trwania": "120 min","plakat":"https://ftmp.helios.pl/Get/file/mvpstr/21364/1636372023", "opis": "Sit irure pariatur proident aliqua consectetur aute labore veniam consectetur eiusmod sunt Lorem aliquip deserunt." },
+        {"id":2, "tytul": "Spider-man No Way Home","czas_trwania": "123 min","plakat":"https://preview.redd.it/irr9oage52081.png?width=640&crop=smart&auto=webp&s=733290e1ebbc4b25bb5c5fc9e1b042de9186dd4a", "opis": "Sit irure pariatur proident aliqua consectetur aute labore veniam consectetur eiusmod sunt Lorem aliquip deserunt." },
+        {"id":3, "tytul": "PITBULL","czas_trwania": "112 min","plakat":"https://ftmp.helios.pl/Get/file/mvpstr/21358/1634808864", "opis": "Sit irure pariatur proident aliqua consectetur aute labore veniam consectetur eiusmod sunt Lorem aliquip deserunt." }
+    ],
+    "Bilet":[{"id":1,"seansID":1,"numer_Miejsca":"1","mail_kupujacego": "czarnaherbata@gmail.com","Cena":"21,37 zł"},
+        {"id":2,"seansID":1,"numer_Miejsca":"2","mail_kupujacego": "jank@gmail.com","Cena":"21,37 zł"},
+        {"id":3,"seansID":1,"numer_Miejsca":"3","mail_kupujacego": "otto.bismarck@gmail.com","Cena":"21,37 zł"},
+        {"id":4,"seansID":1,"numer_Miejsca":"4","mail_kupujacego": "misiak@gmail.com","Cena":"16,97 zł"},
+        {"id":5,"seansID":1,"numer_Miejsca":"5","mail_kupujacego": "walaszek@gmail.com","Cena":"21,37 zł"}
+    ]
+  }

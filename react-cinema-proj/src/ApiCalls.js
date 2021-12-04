@@ -21,3 +21,11 @@ export async function getMovies(){
     });
     return data
 }
+
+export async function putMovie(movie){
+    await Axios.put(url+'Film/'+ movie.id, movie).then((res)=>{
+        return res
+        }).catch(error=>{
+    return error
+    });
+}

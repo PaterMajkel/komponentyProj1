@@ -10,53 +10,57 @@ import Axios from 'axios'
 import {Movies} from './Movies/Movies'
 import {MoviesHome} from './Movies/MoviesHome'
 import {MovieIndex} from './Movies/MovieIndex'
+import {MovieEdit} from './Movies/MovieEdit'
 import {ReservationHome} from './Rooms/ReservationHome'
 import {Reservation60} from './Rooms/Reservation60'
 import {Reservation90} from './Rooms/Reservation90'
-import {getSeances, getMovies} from './ApiCalls'
-import { connect, Provider } from 'react-redux'; 
+import { useSelector, useDispatch } from 'react-redux'; 
+import {reload, editMovie } from './Actions/movieActions'
 function App() {
-  const [seances, setSeances] = useState([])
-  const [movies, setMovies] = useState([])
-  
+  const movies = useSelector(state=> state.movies)
+  const dispatch = useDispatch()
   useEffect(() => {
-    api()
+      api()
   }, [])
   
-  async function api(){
-    const x = await getSeances()
-    setSeances(x)
-    const y = await getMovies()
-    setMovies(y)
+  function editMovieApp(movie){
+    console.log(movie)
+    dispatch(editMovie(movie))
   }
-  const showSeances = () =>{
-    console.log(seances)
+  function api(){
+    console.log("here")
+    dispatch(reload())
+  }
+
+  function showMovies(){
+    console.log(movies)
   }
   return (
     <div className="background">
       <div className="body">
           <nav>
             <ul>
-
               <li><a class="nav-link" href="/">Home</a></li>
               <li><a class="nav-link" href="/seances">Seances</a></li>
               <li><a class="nav-link" href="/movies">Movies</a></li>
               <li><a class="nav-link" href="/reservation60">Reservation60 /TODO</a></li>
               <li><a class="nav-link" href="/reservation90">Reservation90 /TODO</a></li>
-              <button onClick={() => showSeances()}>bruh</button>
             </ul>
           </nav>
         </div>
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='seances' element={<SeancesHome/>}>
-        <Route path='all' element={<Seances seances={seances} movies={movies}/>}/>
+        <Route path='all' element={<Seances/>}/>
         <Route path=':seanceId' element={<SeanceIndex/>}/>
       </Route>
       
       <Route path='movies' element={<MoviesHome/>}>
-        <Route path='all' element={<Movies movies={movies}/>}/>
-        <Route path=':movieId' element={<MovieIndex/>}/>
+        <Route path='all' element={<Movies/>}/>
+        <Route path=':movieId' element={<MovieIndex/>}>
+         <Route path='edit' element={<MovieEdit edit={editMovieApp}/>}/>
+        </Route>
+       
       </Route>
       <Route path='reservation60' element={<Reservation60/>}/>
       <Route path='reservation90' element={<Reservation90/>}/>
