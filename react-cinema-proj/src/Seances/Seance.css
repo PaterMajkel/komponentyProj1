@@ -1,0 +1,18 @@
+img{
+    width:100%;
+    max-width:500px;
+}
+.seans{
+    display: flex;
+    align-items: center;
+    left: 50%;
+    margin-left:200px;
+    margin-right:200px;
+    margin-top: 50px;
+
+}
+.seans:hover{
+    cursor:pointer;
+    transform:scale(1.05);
+    background-color: rgba(0, 0, 0, 0.2);
+}

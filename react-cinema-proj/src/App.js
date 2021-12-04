@@ -40,7 +40,7 @@ function App() {
       <div className="body">
           <nav>
             <ul>
-              <li><a class="nav-link" href="/">Home</a></li>
+              <li><a class="nav-link" href="/">Erebus Cinema</a></li>
               <li><a class="nav-link" href="/seances">Seances</a></li>
               <li><a class="nav-link" href="/movies">Movies</a></li>
               <li><a class="nav-link" href="/reservation60">Reservation60 /TODO</a></li>
