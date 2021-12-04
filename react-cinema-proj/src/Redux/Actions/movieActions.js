@@ -18,19 +18,6 @@ export const reloadAction = (data) => {
     }
 }
 
-export const getAllMovies = () => {
-    return {
-        type: "GETMOVIES"
-    }
-}
-
-export const getMovieById = (id) => {
-    return {
-        type: "GETMOVIEBYID",
-        payload: id
-    }
-}
-
 export const deleteMovieById = (id)  => (dispatch)=> {
     return deleteMovie(id).then(data => {
         dispatch(deleteMovieByIdAction(id));
