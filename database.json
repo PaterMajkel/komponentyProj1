@@ -76,29 +76,7 @@
       "seansID": 1
     }
   ],
-  "Film": [
-    {
-      "id": 1,
-      "tytul": "bruh",
-      "opis": "Sit irure pariatur proident aliqua consectetur aute labore veniam consectetur eiusmod sunt Lorem aliquip deserunt.",
-      "czas_trwania": "120 min min",
-      "plakat": "https://ftmp.helios.pl/Get/file/mvpstr/21364/1636372023"
-    },
-    {
-      "id": 2,
-      "tytul": "Spider-man No Way Home",
-      "czas_trwania": "123 min",
-      "plakat": "https://preview.redd.it/irr9oage52081.png?width=640&crop=smart&auto=webp&s=733290e1ebbc4b25bb5c5fc9e1b042de9186dd4a",
-      "opis": "Sit irure pariatur proident aliqua consectetur aute labore veniam consectetur eiusmod sunt Lorem aliquip deserunt."
-    },
-    {
-      "id": 3,
-      "tytul": "PITBULL",
-      "czas_trwania": "112 min",
-      "plakat": "https://ftmp.helios.pl/Get/file/mvpstr/21358/1634808864",
-      "opis": "Sit irure pariatur proident aliqua consectetur aute labore veniam consectetur eiusmod sunt Lorem aliquip deserunt."
-    }
-  ],
+  "Film": [],
   "Bilet": [
     {
       "id": 1,

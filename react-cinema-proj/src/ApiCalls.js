@@ -29,3 +29,11 @@ export async function putMovie(movie){
     return error
     });
 }
+
+export async function deleteMovie(id){
+    await Axios.delete(url+'Film/'+ id).then((res)=>{
+        return res
+        }).catch(error=>{
+    return error
+    });
+}

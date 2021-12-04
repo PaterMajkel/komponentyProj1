@@ -1,4 +1,4 @@
-import { getMovies, putMovie } from "../ApiCalls"
+import { getMovies, putMovie, deleteMovie } from "../ApiCalls"
 
 export const reload = () => (dispatch)=>{
     
@@ -31,7 +31,15 @@ export const getMovieById = (id) => {
     }
 }
 
-export const deleteMovieById = (id) => {
+export const deleteMovieById = (id)  => (dispatch)=> {
+    return deleteMovie(id).then(data => {
+        dispatch(deleteMovieByIdAction(id));
+      }).catch(error => {
+        throw(error);
+      });
+}
+
+export const deleteMovieByIdAction = (id) => {
     return {
         type: "DELETEMOVIEBYID",
         payload: id
@@ -48,7 +56,7 @@ export const addMovie = (movie) => {
 export const editMovie = (movie) => (dispatch)=>{
     
     return putMovie(movie).then(data => {
-      dispatch(reloadAction(movie));
+      dispatch(editMovieAction(movie));
     }).catch(error => {
       throw(error);
     });

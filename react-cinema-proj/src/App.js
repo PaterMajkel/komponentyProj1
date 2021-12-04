@@ -15,7 +15,7 @@ import {ReservationHome} from './Rooms/ReservationHome'
 import {Reservation60} from './Rooms/Reservation60'
 import {Reservation90} from './Rooms/Reservation90'
 import { useSelector, useDispatch } from 'react-redux'; 
-import {reload, editMovie } from './Actions/movieActions'
+import {reload, editMovie, deleteMovieById } from './Actions/movieActions'
 function App() {
   const movies = useSelector(state=> state.movies)
   const dispatch = useDispatch()
@@ -24,12 +24,16 @@ function App() {
   }, [])
   
   function editMovieApp(movie){
-    console.log(movie)
     dispatch(editMovie(movie))
   }
   function api(){
     console.log("here")
     dispatch(reload())
+  }
+
+  function deleteMovieApp(id){
+    dispatch(deleteMovieById(id))
+
   }
 
   function showMovies(){
@@ -57,7 +61,7 @@ function App() {
       
       <Route path='movies' element={<MoviesHome/>}>
         <Route path='all' element={<Movies/>}/>
-        <Route path=':movieId' element={<MovieIndex/>}>
+        <Route path=':movieId' element={<MovieIndex deleteMovie={deleteMovieApp}/>}>
          <Route path='edit' element={<MovieEdit edit={editMovieApp}/>}/>
         </Route>
        
