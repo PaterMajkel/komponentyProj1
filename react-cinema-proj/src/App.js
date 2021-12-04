@@ -15,18 +15,19 @@ import {ReservationHome} from './Rooms/ReservationHome'
 import {Reservation60} from './Rooms/Reservation60'
 import {Reservation90} from './Rooms/Reservation90'
 import { useSelector, useDispatch } from 'react-redux'; 
-import {reload, editMovie, deleteMovieById } from './Actions/movieActions'
+import {reload, editMovie, deleteMovieById, addMovie } from './Redux/Actions/movieActions'
+import MovieAdd from './Movies/MovieAdd';
 function App() {
   const movies = useSelector(state=> state.movies)
   const dispatch = useDispatch()
   useEffect(() => {
-      api()
+      getData()
   }, [])
   
   function editMovieApp(movie){
     dispatch(editMovie(movie))
   }
-  function api(){
+  function getData(){
     console.log("here")
     dispatch(reload())
   }
@@ -36,9 +37,10 @@ function App() {
 
   }
 
-  function showMovies(){
-    console.log(movies)
+  function addMovieApp(movie){
+    dispatch(addMovie(movie))
   }
+
   return (
     <div className="background">
       <div className="body">
@@ -60,6 +62,7 @@ function App() {
       </Route>
       
       <Route path='movies' element={<MoviesHome/>}>
+        <Route path='add' element={<MovieAdd addMovie={addMovieApp}/>}/>
         <Route path='all' element={<Movies/>}/>
         <Route path=':movieId' element={<MovieIndex deleteMovie={deleteMovieApp}/>}>
          <Route path='edit' element={<MovieEdit edit={editMovieApp}/>}/>

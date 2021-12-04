@@ -37,3 +37,11 @@ export async function deleteMovie(id){
     return error
     });
 }
+
+export async function postMovie(movie){
+    await Axios.post(url+'Film', {tytul: movie.tytul,czas_trwania: movie.czas_trwania,plakat: movie.plakat,opis: movie.opis}).then((res)=>{
+        return res
+        }).catch(error=>{
+    return error
+    });
+}

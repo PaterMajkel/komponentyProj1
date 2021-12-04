@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 import {getSeances} from '../ApiCalls'
 import {Movie} from './Movie'
 import { useSelector, useDispatch } from 'react-redux'
-import { reload } from '../Actions/movieActions'
+import { reload } from '../Redux/Actions/movieActions'
 
 export function Movies(){
 

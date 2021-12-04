@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom'
 import {createStore, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
-import {allReducers} from './Reducers'
+import {allReducers} from './Redux/Reducers'
 import thunk from 'redux-thunk'
 let cinemaStore = createStore(allReducers, applyMiddleware(thunk))
 

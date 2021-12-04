@@ -1,7 +1,7 @@
 import {Link, useParams, Outlet, Navigate} from 'react-router-dom'
 import { useSelector, useDispatch} from 'react-redux';
 import {useState} from 'react'
-import { getMovieById } from '../Actions/movieActions';
+import { getMovieById } from '../Redux/Actions/movieActions';
 import { Movie } from './Movie';
 export function MovieIndex(params){
     const [deleted, setDeleted] = useState(false)
