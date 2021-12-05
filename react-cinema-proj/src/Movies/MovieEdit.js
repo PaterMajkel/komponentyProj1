@@ -33,7 +33,7 @@ export function MovieEdit(params) {
         <div class="edycja">
             <div class="field"><input autoComplete="false" id="title" placeholder={movie.tytul} onChange={e => setTitle(e.target.value)} required></input></div>
             <div class="field"><input autoComplete="false" id="description" placeholder="Streszczenie" onChange={e => setDescription(e.target.value)} required></input></div>
-            <div class="field"><input type="number" autoComplete="false" id="length" placeholder="Czas trwania" onChange={e => setLength(e.target.value)} required></input></div>
+            <div class="field3"><input type="number" min="0" max="300" autoComplete="false" id="length" placeholder="Czas trwania" onChange={e => setLength(e.target.value)} required></input></div>
             <div class="field"><input autoComplete="false" id='poster' placeholder="Plakat" onChange={e => setPoster(e.target.value)} required></input></div>
             <div><button class="button3" onClick={Edit}>Zmien </button></div>
             {edited === true ? <Navigate replace to="/" /> : ""}

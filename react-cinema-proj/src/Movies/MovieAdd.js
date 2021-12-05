@@ -31,7 +31,7 @@ export default function MovieAdd(params) {
         <div class="adds">
             <div class="field2"><input autoComplete="false" id="title" placeholder="Tytul" onChange={e => setTytul(e.target.value)} required></input></div>
             <div class="field2"><input autoComplete="false" id="description" placeholder="Streszczenie" onChange={e => setOpis(e.target.value)} required></input></div>
-            <div class="field2"><input type="number" autoComplete="false" id="length" placeholder="Czas trwania" onChange={e => setCzas(e.target.value)} required ></input></div>
+            <div class="field3"><input type="number" min="0" max="300" autoComplete="false" id="length" placeholder="Czas trwania" onChange={e => setCzas(e.target.value)} required ></input></div>
             <div class="field2"><input autoComplete="false" id='poster' placeholder="Plakat" onChange={e => setPlakat(e.target.value)} required></input></div>
             <button class="button5" onClick={add}>Dodaj </button>
             {added === true ? <Navigate replace to="/" /> : ""}
