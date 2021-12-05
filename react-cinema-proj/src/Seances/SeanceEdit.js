@@ -15,8 +15,8 @@ export function SeanceEdit(params) {
     const [soldTickets, setSoldTickets] = useState(seance.liczba_sprzedanych_biletow);
     const [availableTickets, setAvailableTickets] = useState(seance.liczba_dostepnych_miejsc);
     const [edited, setEdited] = useState(false);
-
-
+    var today = new Date();
+    today=today.toISOString().substring(0, 10);//nie działa wrr
     function Edit() {
         params.edit({id: seanceId, data: date, godzina: hour, salaID: roomId, filmID: movieId, liczba_sprzedanych_biletow: soldTickets, liczba_dostepnych_miejsc: availableTickets});
         setEdited(true);
@@ -24,12 +24,12 @@ export function SeanceEdit(params) {
 
     return (
         <div class="edycja">
-            <div class="field"><input autoComplete="false" id="date" placeholder="Data seansu" onChange={e => setDate(e.target.value)} /></div>
-            <div class="field"><input autoComplete="false" id="hour" placeholder="Godzina seansu" onChange={e => setHour(e.target.value)} /></div>
+            <div class="field3"><input type="date" min={today}  autoComplete="false" id="date" placeholder="Data seansu" onChange={e => setDate(e.target.value)} /></div>
+            <div class="field3"><input type="time" autoComplete="false" id="hour" placeholder="Godzina seansu" onChange={e => setHour(e.target.value)} /></div>
             <div class="field"><input autoComplete="false" id="roomId" placeholder="Numer sali" onChange={e => setRoomId(e.target.value)} /></div>
             <div class="field"><input autoComplete="false" id="movieId" placeholder="Film" onChange={e => setMovieId(e.target.value)} /></div>
             <div class="field"><input autoComplete="false" id="soldTickets" placeholder="Ilość sprzedanych biletów" onChange={e => setSoldTickets(e.target.value)} /></div>
-            <div class="field"><input autoComplete="false" id="availableTickets" placeholder="Numer sali" onChange={e => setAvailableTickets(e.target.value)} /></div>
+            <div class="field"><input autoComplete="false" id="availableTickets" placeholder="Dostępne bilety" onChange={e => setAvailableTickets(e.target.value)} /></div>
             <button class="button3" onClick={Edit}>Edytuj</button>
             {edited === true ? <Navigate replace to="/" /> : ""}
         </div>

@@ -132,3 +132,12 @@ img{
     margin-left: 700px;
     height: 50%;
   }
+  .field3 {
+    padding: 2px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+  .field3 :focus {
+    background-color: lightblue;
+    border: 3px solid #555;
+  }
