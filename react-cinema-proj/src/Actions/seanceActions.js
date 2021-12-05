@@ -1,4 +1,3 @@
-import { postMovie } from "../../API/MovieAPI";
 import { getSeances, putSeance, deleteSeance, postSeance } from "../../API/SeanceAPI"
 
 export const reload = () => (dispatch) => {
@@ -8,7 +7,7 @@ export const reload = () => (dispatch) => {
         })
         .catch(err => {
             throw(err);
-        })
+        });
 }
 
 export const reloadAction = (data) => {
@@ -34,9 +33,9 @@ export const getSeanceById = (id) => {
 }
 
 // DELETEs
-export const deleteSeanceById = (id) => {
+export const deleteSeanceById = (id) => (dispatch) => {
     return deleteSeance(id) 
-        .then(() => { dispatch(deleteSeanceById(id)); })
+        .then(() => { dispatch(deleteSeanceByIdAction(id)); })
         .catch(err => { throw(err); });
 }
 
@@ -54,7 +53,7 @@ export const addSeance = (seance) => (dispatch) => {
         .catch(err => { throw(err); });
 }
 
-export const addSeanceAction = (action) => {
+export const addSeanceAction = (seance) => {
     return {
         type: "ADDSEANCE",
         payload: seance

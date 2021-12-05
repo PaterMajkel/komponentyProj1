@@ -2,15 +2,7 @@ import Axios from 'axios'
 
 const url = 'http://localhost:3000/'
 
-export async function getSeances(){
-    let data = []
-    await Axios.get(url+'Seans').then((res)=>{
-        data=res.data
-        }).catch(error=>{
-    return error
-    });
-    return data
-}
+// IMPLEMENTS: GET POST PUT DELETE
 
 export async function getMovies(){
     let data = []

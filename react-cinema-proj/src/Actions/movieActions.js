@@ -1,4 +1,4 @@
-import { getMovies, putMovie, deleteMovie, postMovie } from "../../ApiCalls"
+import { getMovies, putMovie, deleteMovie, postMovie } from "../../API/MovieAPI"
 
 export const reload = () => (dispatch)=>{
     
