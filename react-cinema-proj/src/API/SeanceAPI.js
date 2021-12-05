@@ -8,6 +8,7 @@ export async function getSeances(){
     let data = []
     await Axios.get(url+'Seans').then((res)=>{
         data=res.data
+        console.log(data)
         }).catch(error=>{
     return error
     });

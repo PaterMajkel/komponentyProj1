@@ -1,19 +1,19 @@
 import { getMovies, putMovie, deleteMovie, postMovie } from "../../API/MovieAPI"
 
-export const reload = () => (dispatch)=>{
+export const reloadMovies = () => (dispatch)=>{
     
       return getMovies().then(data => {
-        dispatch(reloadAction(data));
+        dispatch(reloadMoviesAction(data));
       }).catch(error => {
         throw(error);
       });
     
 }
 
-export const reloadAction = (data) => {
+export const reloadMoviesAction = (data) => {
     console.log(data)
     return {
-        type: "RELOAD",
+        type: "RELOADMOVIES",
         payload: data
     }
 }

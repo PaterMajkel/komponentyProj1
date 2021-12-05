@@ -1,7 +1,7 @@
 
 function  movies(state = [], action) {
   switch (action.type) {
-    case "RELOAD":
+    case "RELOADMOVIES":
         return action.payload
     case "GETMOVIES":
       return state;
@@ -14,7 +14,7 @@ function  movies(state = [], action) {
         new_state[new_state.find((x) => x.id == action.payload.id)] = action.payload
         return new_state
     default:
-      return state;
+      return state
   }
 };
 

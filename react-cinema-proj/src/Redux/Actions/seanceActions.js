@@ -1,20 +1,19 @@
-import { postMovie } from "../../API/MovieAPI";
 import { getSeances, putSeance, deleteSeance, postSeance } from "../../API/SeanceAPI"
 
-export const reload = () => (dispatch) => {
+export const reloadSeances = () => (dispatch) => {
     return getSeances()
         .then(data => {
-            dispatch(reloadAction(data));
+            dispatch(reloadSeancesAction(data));
         })
         .catch(err => {
             throw(err);
         })
 }
 
-export const reloadAction = (data) => {
+export const reloadSeancesAction = (data) => {
     console.log(data);
     return {
-        type: "RELOAD",
+        type: "RELOADSEANCES",
         payload: data
     };
 }

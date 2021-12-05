@@ -15,11 +15,13 @@ import {ReservationHome} from './Rooms/ReservationHome'
 import {Reservation60} from './Rooms/Reservation60'
 import {Reservation90} from './Rooms/Reservation90'
 import { useSelector, useDispatch } from 'react-redux'; 
-import {reload, editMovie, deleteMovieById, addMovie } from './Redux/Actions/movieActions'
+import {reloadMovies, editMovie, deleteMovieById, addMovie } from './Redux/Actions/movieActions'
 import MovieAdd from './Movies/MovieAdd';
 import { addSeance, deleteSeanceById, editSeance } from './Actions/seanceActions';
+import { reloadSeances } from './Redux/Actions/seanceActions';
 function App() {
-  const movies = useSelector(state=> state.movies)
+  const movies = useSelector(state=> state)
+  console.log(movies)
   const dispatch = useDispatch()
   useEffect(() => {
       getData()
@@ -30,7 +32,9 @@ function App() {
   }
   function getData(){
     console.log("here")
-    dispatch(reload())
+    dispatch(reloadMovies())
+    dispatch(reloadSeances())
+
   }
 
   function deleteMovieApp(id){
@@ -44,10 +48,10 @@ function App() {
   function deleteSeanceApp(id){
     dispatch(deleteSeanceById(id))
   }
-  function addSeanceApp(seance){
+  function addSeancesApp(seance){
     dispatch(addSeance(seance))
   }
-  function editSeanceApp(seance){
+  function editSeancesApp(seance){
     dispatch(editSeance(seance))
   }
   return (

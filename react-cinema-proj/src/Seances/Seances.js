@@ -1,19 +1,18 @@
 import { Link, Outlet } from 'react-router-dom'
 import React, {useState, useEffect} from 'react'
-import {getSeances} from '../API/SeanceAPI'
 import { Seance } from './Seance'
 import { useSelector, useDispatch } from 'react-redux'
-import { reload } from '../Redux/Actions/seanceActions'
-import { reload  as movieReload } from '../Redux/Actions/movieActions' 
+import { reloadSeances } from '../Redux/Actions/seanceActions'
+import { reloadMovies  } from '../Redux/Actions/movieActions' 
 export function Seances(props){
     //const [seances, setSeances] = useState([])
-    const seances = useSelector(state=> state.seances)
-    const movies = useSelector(state=> state.movies)
+    const seances = useSelector(seancesState => seancesState.seances)
+    const movies = useSelector(moviesState=> moviesState.movies)
     const dispatch = useDispatch()
     if(seances===undefined)
-      dispatch(reload())
+      dispatch(reloadSeances())
     if(movies===undefined)
-      dispatch(movieReload())
+      dispatch(reloadMovies())
     console.log(seances)
     return(
         <div>

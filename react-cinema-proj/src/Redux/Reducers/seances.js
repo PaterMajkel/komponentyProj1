@@ -1,7 +1,7 @@
 function seances(state = [], action) {
     console.log(action.type)
     switch(action.type) {
-        case "RELOAD":
+        case "RELOADSEANCES":
             return action.payload;
         case "GETSEANCES":
             return state;
