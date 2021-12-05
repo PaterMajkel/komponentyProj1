@@ -74,8 +74,9 @@ function App() {
       <Route path='seances' element={<SeancesHome/>}>
         <Route path='all' element={<Seances/>}/>
         <Route path='add' element={<SeanceAdd addSeance={addSeanceApp}/>}/>
-        <Route path=':seanceId' element={<SeanceIndex deleteSeance={deleteSeanceApp}/>}/>
-        <Route path='edit' element={<SeanceEdit edit={editSeanceApp}/>}/>
+        <Route path=':seanceId' element={<SeanceIndex deleteSeance={deleteSeanceApp}/>}>
+          <Route path='edit' element={<SeanceEdit edit={editSeanceApp}/>}/>
+        </Route>
       </Route>
       
       <Route path='movies' element={<MoviesHome/>}>
