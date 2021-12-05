@@ -1,11 +1,10 @@
 import { Link, Outlet } from 'react-router-dom'
+import './Movie.css';
 export function MoviesHome(){
     return(
         <div>
-            <p>Welcome to Erebus cinema!</p>
-            <br/>
-            <Link to='add'><button>Add Movie</button></Link>
-            <Link to='all'><button>Show me all available movies</button></Link>
+            <Link to='all'><button class="button4">Show me all available movies</button></Link>
+            <Link to='add'><button class="button4">Add Movie</button></Link>
             <Outlet/>
         </div>
     )
