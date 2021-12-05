@@ -27,7 +27,7 @@ export default function SeanceAdd(params){
             <div class="field2"><input autoComplete="false" id="soldTickets" placeholder="Ilość sprzedanych biletów" onChange={e => setSoldTickets(e.target.value)} /></div>
             <div class="field2"><input autoComplete="false" id="availableTickets" placeholder="Numer sali" onChange={e => setAvailableTickets(e.target.value)} /></div>
 
-            <button class="button5" onClick={add}>Dodaj seans</button>
+            <button class="button5" onClick={add}>Dodaj</button>
             { added===true ? <Navigate replace to="/" /> : ""}
         </div>
     )

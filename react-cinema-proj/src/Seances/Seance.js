@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom';
 import './Seance.css'
 export function Seance(seance){
 
-    return (<div class="seans">
+    return (<div class="film">
         <img src={seance.plakat} alt="Movie poster"></img>
-        <div class="opis">
+        <div class="Opis">
             <h4>{seance.tytul}</h4>
             <p>Wolne miejsca: {seance.wolne_miejsca}</p>
             <p>Data seansu: {seance.data}</p>
