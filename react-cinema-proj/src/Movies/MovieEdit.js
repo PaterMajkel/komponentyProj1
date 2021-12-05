@@ -1,7 +1,7 @@
 import {useParams, Navigate} from 'react-router-dom'
 import { useState } from 'react';
 import { useSelector} from 'react-redux';
-
+import './Movie.css';
 export function MovieEdit(params){
     let {movieId} = useParams();
 
@@ -20,12 +20,12 @@ export function MovieEdit(params){
     }
 
     return( 
-        <div>
-            <input autoComplete="false" id="title" placeholder= {movie.tytul} onChange={e => setTitle(e.target.value)}></input>
-            <input autoComplete="false" id="description" placeholder= "Streszczenie" onChange={e => setDescription(e.target.value)}></input>
-            <input autoComplete="false" id="length" placeholder= "Czas trwania" onChange={e => setLength(e.target.value)}></input>
-            <input autoComplete="false" id='poster' placeholder= "Plakat" onChange={e => setPoster(e.target.value)}></input>
-            <button onClick={Edit}>Zmien </button>
+        <div class="edycja">
+            <div class="field"><input autoComplete="false" id="title" placeholder= {movie.tytul} onChange={e => setTitle(e.target.value)}></input></div>
+            <div class="field"><input autoComplete="false" id="description" placeholder= "Streszczenie" onChange={e => setDescription(e.target.value)}></input></div>
+            <div class="field"><input autoComplete="false" id="length" placeholder= "Czas trwania" onChange={e => setLength(e.target.value)}></input></div>
+            <div class="field"><input autoComplete="false" id='poster' placeholder= "Plakat" onChange={e => setPoster(e.target.value)}></input></div>
+            <div><button class="button3" onClick={Edit}>Zmien </button></div>
             {edited===true? <Navigate replace to="/" /> : ""}
         </div>
     )

@@ -67,7 +67,7 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='seances' element={<SeancesHome/>}>
         <Route path='all' element={<Seances/>}/>
-        <Route path=':seanceId' element={<SeanceIndex/>}/>
+        <Route path=':seanceId' element={<SeanceIndex deleteSeance={deleteSeanceApp}/>}/>
       </Route>
       
       <Route path='movies' element={<MoviesHome/>}>

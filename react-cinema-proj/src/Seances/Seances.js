@@ -2,13 +2,13 @@ import { Link, Outlet } from 'react-router-dom'
 import React, {useState, useEffect} from 'react'
 import {getSeances} from '../API/SeanceAPI'
 import { Seance } from './Seance'
-
-
+//import { useSelector, useDispatch } from 'react-redux'
+//import { reload } from '../Redux/Actions/seanceActions'
 export function Seances(props){
     const [seances, setSeances] = useState(props.seances)
     const [movies, setMovies] = useState(props.movies)
     //const [seances, setSeances] = useState([])
-
+    //const dispatch = useDispatch()
     useEffect(() => {
         //api()
       }, [])
@@ -17,6 +17,8 @@ export function Seances(props){
         const x = await getSeances()
         setSeances(x)
       }
+    //if(seances==undefined)
+     // dispatch(reload())
 
     console.log(seances)
     return(

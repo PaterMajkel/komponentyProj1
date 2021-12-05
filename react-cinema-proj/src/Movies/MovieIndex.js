@@ -1,27 +1,29 @@
-import {Link, useParams, Outlet, Navigate} from 'react-router-dom'
-import { useSelector, useDispatch} from 'react-redux';
-import {useState} from 'react'
+import { Link, useParams, Outlet, Navigate } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react'
 import { getMovieById } from '../Redux/Actions/movieActions';
 import { Movie } from './Movie';
-export function MovieIndex(params){
+import './Movie.css';
+export function MovieIndex(params) {
     const [deleted, setDeleted] = useState(false)
-    let {movieId} = useParams();
+    let { movieId } = useParams();
 
-    function deleteMovie(){
+    function deleteMovie() {
         params.deleteMovie(movieId)
         setDeleted(true)
     }
 
-    const movies = useSelector(state=> state.movies)
-    const movie = movies.find(p=> p.id == movieId)
-    return( 
-        <div>
-        <Movie movie={movie}></Movie>
-        <Link to={`edit`}><button>Edit</button></Link>
-        {params.deleteMovie !==undefined ? <button onClick={deleteMovie}>Usuń</button> : ""}
-        {deleted===true? <Navigate replace to="/" /> : ""}
-
-        <Outlet/>
-    </div>
+    const movies = useSelector(state => state.movies)
+    const movie = movies.find(p => p.id == movieId)
+    return (
+        <div class="all">
+            <Movie movie={movie}></Movie>
+            <div> 
+                <div><Link to={`edit`}><button class="button1">Edit</button></Link></div>
+                <div>{params.deleteMovie !== undefined ? <button class="button2" onClick={deleteMovie}>Usuń</button> : ""}</div>
+                {deleted === true ? <Navigate replace to="/" /> : ""}
+            </div>
+            <Outlet />
+        </div>
     )
 }

@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom'
 import React, {useState, useEffect} from 'react'
-import {getSeances} from '../../API/SeanceAPI'
+import {getSeances} from '../API/SeanceAPI'
 import {Movie} from './Movie'
 import { useSelector, useDispatch } from 'react-redux'
 import { reload } from '../Redux/Actions/movieActions'

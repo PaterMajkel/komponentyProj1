@@ -34,7 +34,7 @@ export const getSeanceById = (id) => {
 }
 
 // DELETEs
-export const deleteSeanceById = (id) => {
+export const deleteSeanceById = (id) => (dispatch)=>{
     return deleteSeance(id) 
         .then(() => { dispatch(deleteSeanceById(id)); })
         .catch(err => { throw(err); });
@@ -54,7 +54,7 @@ export const addSeance = (seance) => (dispatch) => {
         .catch(err => { throw(err); });
 }
 
-export const addSeanceAction = (action) => {
+export const addSeanceAction = (seance) => {
     return {
         type: "ADDSEANCE",
         payload: seance
@@ -70,7 +70,7 @@ export const editSeance = (seance) => (dispatch) => {
 
 export const editSeanceAction = (seance) => {
     return {
-        type = "EDITSEANCE",
+        type: "EDITSEANCE",
         payload: seance
     };
 }
