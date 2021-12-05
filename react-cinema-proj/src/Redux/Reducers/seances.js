@@ -1,4 +1,5 @@
 function seances(state = [], action) {
+    console.log(action.type)
     switch(action.type) {
         case "RELOAD":
             return action.payload;
