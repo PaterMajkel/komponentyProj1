@@ -1,10 +1,9 @@
 import { Link, Outlet } from 'react-router-dom'
+import './Seance.css';
 export function SeancesHome(){
     return(
         <div>
-            <p>Welcome to Erebus cinema!</p>
-            <br/>
-            <Link to='all'><span>Show me all scheduled seances</span></Link>
+            <Link to='all'><button class="button4">Show me all scheduled seances</button></Link>
             <Outlet/>
         </div>
     )

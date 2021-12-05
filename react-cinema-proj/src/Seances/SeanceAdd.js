@@ -20,12 +20,12 @@ export default function SeanceAdd(params){
 
     return(
         <div>
-            <input autoComplete="false" id="date" placeholder="Data seansu" onChange={e => setDate(e.target.value)} />
-            <input autoComplete="false" id="hour" placeholder="Godzina seansu" onChange={e => setHour(e.target.value)} />
-            <input autoComplete="false" id="roomId" placeholder="Numer sali" onChange={e => setRoomId(e.target.value)} />
-            <input autoComplete="false" id="movieId" placeholder="Film" onChange={e => setMovieId(e.target.value)} />
-            <input autoComplete="false" id="soldTickets" placeholder="Ilość sprzedanych biletów" onChange={e => setSoldTickets(e.target.value)} />
-            <input autoComplete="false" id="availableTickets" placeholder="Numer sali" onChange={e => setAvailableTickets(e.target.value)} />
+            <div ><input autoComplete="false" id="date" placeholder="Data seansu" onChange={e => setDate(e.target.value)} /></div>
+            <div><input autoComplete="false" id="hour" placeholder="Godzina seansu" onChange={e => setHour(e.target.value)} /></div>
+            <div><input autoComplete="false" id="roomId" placeholder="Numer sali" onChange={e => setRoomId(e.target.value)} /></div>
+            <div><input autoComplete="false" id="movieId" placeholder="Film" onChange={e => setMovieId(e.target.value)} /></div>
+            <div><input autoComplete="false" id="soldTickets" placeholder="Ilość sprzedanych biletów" onChange={e => setSoldTickets(e.target.value)} /></div>
+            <div><input autoComplete="false" id="availableTickets" placeholder="Numer sali" onChange={e => setAvailableTickets(e.target.value)} /></div>
 
             <button onClick={add}>Dodaj seans</button>
             { added===true ? <Navigate replace to="/" /> : ""}
