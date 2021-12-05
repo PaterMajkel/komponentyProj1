@@ -17,8 +17,10 @@ import {Reservation90} from './Rooms/Reservation90'
 import { useSelector, useDispatch } from 'react-redux'; 
 import {reloadMovies, editMovie, deleteMovieById, addMovie } from './Redux/Actions/movieActions'
 import MovieAdd from './Movies/MovieAdd';
+import SeanceAdd from './Seances/SeanceAdd';
 import { addSeance, deleteSeanceById, editSeance } from './Actions/seanceActions';
 import { reloadSeances } from './Redux/Actions/seanceActions';
+import { SeanceEdit } from './Seances/SeanceEdit';
 function App() {
   const movies = useSelector(state=> state)
   console.log(movies)
@@ -48,10 +50,10 @@ function App() {
   function deleteSeanceApp(id){
     dispatch(deleteSeanceById(id))
   }
-  function addSeancesApp(seance){
+  function addSeanceApp(seance){
     dispatch(addSeance(seance))
   }
-  function editSeancesApp(seance){
+  function editSeanceApp(seance){
     dispatch(editSeance(seance))
   }
   return (
@@ -71,7 +73,9 @@ function App() {
       <Route path='/' element={<Home/>}/>
       <Route path='seances' element={<SeancesHome/>}>
         <Route path='all' element={<Seances/>}/>
+        <Route path='add' element={<SeanceAdd addSeance={addSeanceApp}/>}/>
         <Route path=':seanceId' element={<SeanceIndex deleteSeance={deleteSeanceApp}/>}/>
+        <Route path='edit' element={<SeanceEdit edit={editSeanceApp}/>}/>
       </Route>
       
       <Route path='movies' element={<MoviesHome/>}>

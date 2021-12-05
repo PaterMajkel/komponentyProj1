@@ -18,7 +18,7 @@ export function SeanceIndex(params) {
     return (
         <div>
             <Seance seance={seance}></Seance>
-            <Link to={`edit`}><button>Edytuj</button></Link>
+            <Link to={`edit`}><button>Edit</button></Link>
             {params.deleteSeance !== undefined ? <button onClick={deleteSeance}>Usuń</button> : ""}
             {deleted === true ? <Navigate replace to="/" /> : "" }
 
