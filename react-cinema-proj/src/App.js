@@ -17,6 +17,7 @@ import {Reservation90} from './Rooms/Reservation90'
 import { useSelector, useDispatch } from 'react-redux'; 
 import {reload, editMovie, deleteMovieById, addMovie } from './Redux/Actions/movieActions'
 import MovieAdd from './Movies/MovieAdd';
+import { addSeance, deleteSeanceById, editSeance } from './Actions/seanceActions';
 function App() {
   const movies = useSelector(state=> state.movies)
   const dispatch = useDispatch()
@@ -40,7 +41,15 @@ function App() {
   function addMovieApp(movie){
     dispatch(addMovie(movie))
   }
-
+  function deleteSeanceApp(id){
+    dispatch(deleteSeanceById(id))
+  }
+  function addSeanceApp(seance){
+    dispatch(addSeance(seance))
+  }
+  function editSeanceApp(seance){
+    dispatch(editSeance(seance))
+  }
   return (
     <div className="background">
       <div className="body">

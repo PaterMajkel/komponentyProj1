@@ -1,6 +1,6 @@
 import { Link, Outlet } from 'react-router-dom'
 import React, {useState, useEffect} from 'react'
-import {getSeances} from '../../API/SeanceAPI'
+import {getSeances} from '../API/SeanceAPI'
 import { Seance } from './Seance'
 
 

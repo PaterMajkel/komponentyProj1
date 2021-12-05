@@ -1,4 +1,4 @@
-import { getSeances, putSeance, deleteSeance, postSeance } from "../../API/SeanceAPI"
+import { getSeances, putSeance, deleteSeance, postSeance } from "../API/SeanceAPI"
 
 export const reload = () => (dispatch) => {
     return getSeances()
@@ -69,7 +69,7 @@ export const editSeance = (seance) => (dispatch) => {
 
 export const editSeanceAction = (seance) => {
     return {
-        type = "EDITSEANCE",
+        type: "EDITSEANCE",
         payload: seance
     };
 }
