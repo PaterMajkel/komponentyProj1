@@ -6,9 +6,9 @@ img{
     display: flex;
     align-items: center;
     left: 50%;
-    min-width: 1300px;
-    margin-left:200px;
-    margin-right:50px;
+    min-width: 100%;
+    margin-left:10%;
+    margin-right:10%;
     margin-top: 50px;
 
 }
@@ -140,4 +140,7 @@ img{
   .field3 :focus {
     background-color: lightblue;
     border: 3px solid #555;
+  }
+  .editable{
+    margin-left: 10%;
   }
