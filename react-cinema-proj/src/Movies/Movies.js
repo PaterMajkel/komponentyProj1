@@ -15,7 +15,7 @@ export function Movies(){
     return(
         <div>
             {movies.map(movie => {
-            return (<Link to={`/movies/${movie.id}`}><Movie movie={movie}></Movie></Link>)})}
+            return (<Movie movie={movie}></Movie>)})}
         </div>
     )
 }

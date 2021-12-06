@@ -12,6 +12,7 @@ export function Movie(params){
                 <h4>{params.movie.tytul}</h4>
                 <p>Czas trwania: {params.movie.czas_trwania}</p>
                 <p>streszczenie: {params.movie.opis}</p>
+                {params.index? '' :  <p><Link to={`/movies/${params.movie.id}`}><button class="button3">Strona Filmu</button></Link></p>}
                 
             </div>
         </div>
