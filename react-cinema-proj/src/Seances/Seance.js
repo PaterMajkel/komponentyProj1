@@ -9,8 +9,8 @@ export function Seance(seance){
             <p>Wolne miejsca: {seance.wolne_miejsca}</p>
             <p>Data seansu: {seance.data}</p>
             <p>Godzina seansu: {seance.godzina}</p>
-            <p><Link to={`/movies/${seance.filmID}`}>Strona Filmu</Link></p>
-            {seance.index? '' :  <p><Link to={`/seances/${seance.id}`}>Zarezerwuj</Link></p>}
+            <p><Link to={`/movies/${seance.filmID}`}><button class="button3">Strona Filmu</button></Link></p>
+            {seance.index? '' :  <p><Link to={`/seances/${seance.id}`}><button class="button3">Strona Seansu</button></Link></p>}
            
         </div>
     </div>)

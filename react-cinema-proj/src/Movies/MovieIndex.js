@@ -17,7 +17,7 @@ export function MovieIndex(params) {
     const movie = movies.find(p => p.id == movieId)
     return (
         <div class="all">
-            <Movie movie={movie}></Movie>
+            <Movie movie={movie} index={true}></Movie>
             <div> 
                 <div><Link to={`edit`}><button class="button1">Edit</button></Link></div>
                 <div>{params.deleteMovie !== undefined ? <button class="button2" onClick={deleteMovie}>Usuń</button> : ""}</div>
