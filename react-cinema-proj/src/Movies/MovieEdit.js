@@ -2,6 +2,8 @@ import { useParams, Navigate } from 'react-router-dom'
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import './Movie.css';
+import PropTypes from 'prop-types';
+
 export function MovieEdit(params) {
     let { movieId } = useParams();
 
@@ -48,3 +50,10 @@ export function MovieEdit(params) {
     )
 
 }
+
+/*MovieEdit.propTypes = {
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    length: PropTypes.number.isRequired,
+    poster: PropTypes.string.isRequired
+}*/

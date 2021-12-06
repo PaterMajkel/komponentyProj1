@@ -1,7 +1,9 @@
 import { useState } from "react"
 import { Navigate } from "react-router-dom"
 import { useSelector } from "react-redux"
+import PropTypes from 'prop-types';
 import './Movie.css';
+
 export default function MovieAdd(params) {
     const [added, setAdded] = useState(false)
     const [tytul, setTytul] = useState('')
@@ -11,9 +13,9 @@ export default function MovieAdd(params) {
     const movies = useSelector(state => state.movies)
 
     function add() {
-        console.log(movies[movies.length])
+        console.log(movies[movies.length - 1]);
 
-        params.addMovie({ id: movies[movies.length-1].id+1, tytul, czas_trwania: czas_trwania + " min", plakat, opis })
+        params.addMovie({ id: movies[movies.length - 1].id + 1, tytul, czas_trwania: czas_trwania + " min", plakat, opis })
         setAdded(true)
     }
     function isValidHttpUrl(string) {//funkcja sprawdza poprawność czy to link 
@@ -45,3 +47,10 @@ export default function MovieAdd(params) {
         </div>
     )
 }
+
+/*MovieAdd.propTypes = {
+    tytul: PropTypes.string.isRequired,
+    opis: PropTypes.string.isRequired,
+    czas_trwania: PropTypes.number.isRequired,
+    plakat: PropTypes.string.isRequired
+}*/
