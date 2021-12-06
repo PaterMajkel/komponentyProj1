@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
-import './Seance.css'
 export function Seance(seance){
 
-    return (<div class="film">
+    return (<div class="seance">
         <img src={seance.plakat} alt="Movie poster"></img>
         <div class="Opis">
             <h4>{seance.tytul}</h4>

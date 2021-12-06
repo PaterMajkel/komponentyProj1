@@ -2,23 +2,23 @@ img{
     width:100%;
     max-width:500px;
 }
-.seans{
+.seance{
     display: flex;
     align-items: center;
     left: 50%;
-    margin-left:200px;
-    margin-right:200px;
+    margin-left:10%;
+    margin-right:20%;
     margin-top: 50px;
 
 }
-.seans:hover{
+.seance:hover{
     cursor:pointer;
     transform:scale(1.05);
     background-color: rgba(0, 0, 0, 0.2);
 }
 .movecenter{
     left: 50%;
-    margin-left:200px;
-    margin-right:500px;
+    margin-left:30%;
+    margin-right:10%;
     margin-top: 50px;
 }

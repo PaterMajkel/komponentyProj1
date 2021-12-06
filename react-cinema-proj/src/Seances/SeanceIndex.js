@@ -21,7 +21,7 @@ export function SeanceIndex(params) {
         <div class="all">
             <Seance plakat={movie.plakat} tytul={movie.tytul} wolne_miejsca={seance.liczba_dostepnych_miejsc - seance.liczba_sprzedanych_biletow}
                 data={seance.data} filmID={seance.filmID} id={seance.id} index={true}></Seance>
-            <div>
+            <div class="editable">
                 <div><Link to={`edit`}><button class="button1">Edit</button></Link></div>
                 <div>{params.deleteSeance !== undefined ? <button class="button2" onClick={deleteSeance}>Usuń</button> : ""}</div>
                 {deleted === true ? <Navigate replace to="/" /> : ""}
