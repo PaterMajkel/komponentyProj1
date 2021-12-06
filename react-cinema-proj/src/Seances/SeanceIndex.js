@@ -15,17 +15,20 @@ export function SeanceIndex(params) {
 
     const movies = useSelector(state => state.movies)
     const seances = useSelector(state => state.seances);
-    const seance = seances.find(s => s.id == seanceId);
+    const seance = seances.find(s => s.id === +seanceId);
     const movie = movies.find(p => p.id === seance.filmID)
     return (
+        <div>
         <div class="all">
             <Seance plakat={movie.plakat} tytul={movie.tytul} wolne_miejsca={seance.liczba_dostepnych_miejsc - seance.liczba_sprzedanych_biletow}
                 data={seance.data} filmID={seance.filmID} id={seance.id} index={true}></Seance>
             <div>
+                <div><Link to={`reservation/60`}><button class="button1">Wybierz miejsca</button></Link></div>
                 <div><Link to={`edit`}><button class="button1">Edit</button></Link></div>
                 <div>{params.deleteSeance !== undefined ? <button class="button2" onClick={deleteSeance}>Usuń</button> : ""}</div>
                 {deleted === true ? <Navigate replace to="/" /> : ""}
             </div>
+        </div>
             <Outlet />
         </div>
     )

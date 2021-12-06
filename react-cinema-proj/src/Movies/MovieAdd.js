@@ -11,9 +11,9 @@ export default function MovieAdd(params) {
     const movies = useSelector(state => state.movies)
 
     function add() {
-        console.log(movies[movies.length - 1])
+        console.log(movies[movies.length])
 
-        params.addMovie({ id: movies[movies.length - 1].id, tytul, czas_trwania: czas_trwania + " min", plakat, opis })
+        params.addMovie({ id: movies[movies.length-1].id+1, tytul, czas_trwania: czas_trwania + " min", plakat, opis })
         setAdded(true)
     }
     function isValidHttpUrl(string) {//funkcja sprawdza poprawność czy to link 

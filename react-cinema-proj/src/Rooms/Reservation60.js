@@ -1,21 +1,48 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useState } from 'react';
 import './Reservation.css';
+import Seat from './Seat';
 export function Reservation60(reserv){
-
+    const [reservedSeats, setReservedSeats]=useState([])
+    const [count, setCount] = useState(0)
 
     //const container = Reservation60.querySelector('.container');
     //const seats=document.querySelectorAll('.row.seat:not(.occupied)');
-    const count=document.getElementById('count');
+    const {seanseId} = useParams();
 
     function updateSelectedCount(){
         const selectedSeats=document.querySelectorAll('.row .seat.selected')
         const selectedSeatsCount=selectedSeats.length;
         console.log(selectedSeatsCount)
-        count.innerText=selectedSeatsCount;
+        setCount(count)
+    }
+
+    function updateSelectedCountTest(num, id){
+        console.log(num)
+        console.log(id)
+
+        setCount(count+parseInt(num))
+        console.log(count + " count")
+        if(num<0)
+        {
+            //akcja delete
+            console.log(reservedSeats.length)
+            if(reservedSeats.length<=1 || reservedSeats.length===undefined)
+                {
+                    setReservedSeats([])
+                    return
+                }
+            setReservedSeats(reservedSeats.filter(x=> x!==id))
+            return
+        }
+        //akcja post
+        setReservedSeats(reservedSeats.push(id))
+        console.log(reservedSeats)
     }
 
     return (
-    <div className="center">
+        <div className="center">
+        <div><button onClick={()=> console.log(reservedSeats + " " + count)}>xDDDDDDDDDD</button></div>
         <div>
             <div class="field1"><input autoComplete="false" id="mail" placeholder="Mail" required/></div>
         </div>
@@ -38,11 +65,7 @@ export function Reservation60(reserv){
         <div className="container">
             <div className="ekran"></div>
             <div className="row">
-                <div id="1" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
+                <Seat id="1" ChangeCount={updateSelectedCountTest} takenIds={[]}/>
                 <div id="2" className="seat" onClick={e=>{
                     if(!e.target.classList.contains('occupied'))
                     {e.target.classList.toggle('selected')
@@ -351,7 +374,7 @@ export function Reservation60(reserv){
             </div>
         </div>
         <p className="text">
-            Zostało wybrane <span id="count">0</span> miejsc
+            Zostało wybrane <span id="count">{count}</span> miejsc
         </p>
     </div>)
 }

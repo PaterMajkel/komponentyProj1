@@ -1,10 +1,11 @@
 
 import { Link, Outlet } from 'react-router-dom'
-export function ReservationHome()
+export default function ReservationHome()
 {
     return(
         <div>
-            <p>Welcome to Erebus Reservation!</p>
+            <p>Please select your seats and input a valid email into the input box</p>
+            <Outlet/>
         </div>
     )
 }

@@ -21,7 +21,7 @@ export async function deleteTicket(id) {
 }
 
 export async function postTicket(ticket) {
-    await Axios.delete(url + "Ticket", { id: ticket.id,
+    await Axios.post(url + "Ticket", { id: ticket.id,
                                          seansID: ticket.seansID,
                                          numer_Miejsca: ticket.numer_Miejsca,
                                          mail_kupujacego: ticket.mail_kupujacego,

@@ -1,9 +1,7 @@
 function tickets(state = [], action) {
     switch(action.type) {
-        case "RELOAD":
+        case "RELOADTICKETS":
             return action.payload;
-        case "GETTICKETS":
-            return state;
         case "DELETETICKETBYID":
             return state.filter(s => s.id !== action.payload);
         case "ADDTICKET":

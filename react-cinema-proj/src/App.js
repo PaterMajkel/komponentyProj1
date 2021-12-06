@@ -11,7 +11,6 @@ import { Movies } from './Movies/Movies'
 import { MoviesHome } from './Movies/MoviesHome'
 import { MovieIndex } from './Movies/MovieIndex'
 import { MovieEdit } from './Movies/MovieEdit'
-import { ReservationHome } from './Rooms/ReservationHome'
 import { Reservation60 } from './Rooms/Reservation60'
 import { Reservation90 } from './Rooms/Reservation90'
 import { useSelector, useDispatch } from 'react-redux';
@@ -22,10 +21,9 @@ import { addSeance, deleteSeanceById, editSeance } from './Actions/seanceActions
 import { reloadSeances } from './Redux/Actions/seanceActions';
 import { SeanceEdit } from './Seances/SeanceEdit';
 import { SeanceDate } from './Seances/SeanceDate';
-import { SeanceNow2 } from './Seances/SeanceNow2';
+import { SeanceNow } from './Seances/SeanceNow';
+import ReservationHome from './Rooms/ReservationHome'
 function App() {
-  const movies = useSelector(state => state)
-  console.log(movies)
   const dispatch = useDispatch()
   useEffect(() => {
     getData()
@@ -75,10 +73,14 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='seances' element={<SeancesHome />}>
           <Route path='date' element={<SeanceDate/>}/>
-          <Route path='now' element={<SeanceNow2/>}/>
+          <Route path='now' element={<SeanceNow/>}/>
           <Route path='all' element={<Seances />} />
           <Route path='add' element={<SeanceAdd addSeance={addSeanceApp} />} />
           <Route path=':seanceId' element={<SeanceIndex deleteSeance={deleteSeanceApp} />}>
+            <Route path='reservation' element={<ReservationHome/>}>
+              <Route path='60' element={<Reservation60 />} />
+              <Route path='90' element={<Reservation90 />} />
+            </Route>
             <Route path='edit' element={<SeanceEdit edit={editSeanceApp} />} />
           </Route>
         </Route>
@@ -91,8 +93,7 @@ function App() {
           </Route>
 
         </Route>
-        <Route path='reservation60' element={<Reservation60 />} />
-        <Route path='reservation90' element={<Reservation90 />} />
+        
       </Routes>
     </div>
   );

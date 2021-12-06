@@ -1,7 +1,7 @@
 import { deleteTicket, getTickets, postTicket } from "../../API/TicketAPI"
 import { deleteSeanceByIdAction } from "./seanceActions";
 
-export const reload = () => (dispatch) => {
+export const reloadT = () => (dispatch) => {
     return getTickets()
         .then(data => {
             dispatch(reloadAction(data));
@@ -14,29 +14,15 @@ export const reload = () => (dispatch) => {
 export const reloadAction = (data) => {
     console.log(data);
     return {
-        type: "RELOAD",
+        type: "RELOADTICKETS",
         payload: data
     };
 }
 
-// GETs
-
-export const getAllTickets = () => {
-    return {
-        type: "GETTICKETS"
-    };
-}
-
-export const getTicketById = (id) => {
-    return {
-        type: "GETTICKETBYID",
-        payload: id
-    };
-}
 
 // DELETEs
 
-export const deleteTicketById = (id) => {
+export const deleteTicketById = (id) => (dispatch) => {
     return deleteTicket(id)
         .then(() => { dispatch(deleteTicketByIdAction(id)); })
         .catch(err => { throw(err); });
