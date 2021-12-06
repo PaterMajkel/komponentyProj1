@@ -29,6 +29,13 @@ export function MovieEdit(params) {
 
         return url.protocol === "http:" || url.protocol === "https:";
     }
+    function iscorrectTitle(s)
+    {
+        if((s.match(/^\d/) || s.charCodeAt(0)>=65 && s.charCodeAt(0)<=90) && s.length>1 )
+        {
+            return true
+        }
+    }
     return (
         <div class="edycja">
             <div class="field"><input autoComplete="false" id="title" placeholder={movie.tytul} onChange={e => setTitle(e.target.value)} required></input></div>

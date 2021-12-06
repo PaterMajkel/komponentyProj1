@@ -27,11 +27,18 @@ export default function MovieAdd(params) {
 
         return url.protocol === "http:" || url.protocol === "https:";
     }
+    function iscorrectTitle(s)
+    {
+        if((s.match(/^\d/) || s.charCodeAt(0)>=65 && s.charCodeAt(0)<=90) && s.length>1 )
+        {
+            return true
+        }
+    }
     return (
         <div class="adds">
             <div class="field2"><input autoComplete="false" id="title" placeholder="Tytul" onChange={e => setTytul(e.target.value)} required></input></div>
             <div class="field2"><input autoComplete="false" id="description" placeholder="Streszczenie" onChange={e => setOpis(e.target.value)} required></input></div>
-            <div class="field3"><input type="number" min="0" max="300" autoComplete="false" id="length" placeholder="Czas trwania" onChange={e => setCzas(e.target.value)} required ></input></div>
+            <div class="field3"><input type="number" min="30" max="300" autoComplete="false" id="length" placeholder="Czas trwania" onChange={e => setCzas(e.target.value)} required ></input></div>
             <div class="field2"><input autoComplete="false" id='poster' placeholder="Plakat" onChange={e => setPlakat(e.target.value)} required></input></div>
             <button class="button5" onClick={add}>Dodaj </button>
             {added === true ? <Navigate replace to="/" /> : ""}

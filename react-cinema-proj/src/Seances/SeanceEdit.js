@@ -21,7 +21,7 @@ export function SeanceEdit(params) {
         params.edit({id: seanceId, data: date, godzina: hour, salaID: roomId, filmID: movieId, liczba_sprzedanych_biletow: soldTickets, liczba_dostepnych_miejsc: availableTickets});
         setEdited(true);
     }
-
+    
     return (
         <div class="edycja">
             <div class="field3"><input type="date" min={today}  autoComplete="false" id="date" placeholder="Data seansu" onChange={e => setDate(e.target.value)} /></div>

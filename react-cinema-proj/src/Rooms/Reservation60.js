@@ -17,7 +17,7 @@ export function Reservation60(reserv){
     return (
     <div className="center">
         <div>
-            Film XYZ To/do
+            <div class="field1"><input autoComplete="false" id="mail" placeholder="Mail" required/></div>
         </div>
         <ul className="showcase">
             <li>
