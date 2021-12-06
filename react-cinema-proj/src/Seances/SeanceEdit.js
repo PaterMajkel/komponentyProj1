@@ -1,7 +1,7 @@
 import { useParams, Navigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-
+import PropTypes from 'prop-types'
 export function SeanceEdit(params) {
     let {seanceId} = useParams();
 
@@ -35,3 +35,12 @@ export function SeanceEdit(params) {
         </div>
     )
 }
+
+/*SeanceEdit.propTypes = {
+    date: PropTypes.instanceOf(Date),
+    hour: PropTypes.string,
+    roomId: PropTypes.number,
+    movieId: PropTypes.number,
+    soldTickets: PropTypes.number,
+    availableTickets: PropTypes.number
+}*/

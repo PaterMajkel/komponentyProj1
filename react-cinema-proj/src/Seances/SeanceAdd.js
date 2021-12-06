@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Navigate } from "react-router-dom"
 import { useSelector } from "react-redux"
+import PropTypes from 'prop-types'
 
 export default function SeanceAdd(params){
     const [added, setAdded] = useState(false)
@@ -31,3 +32,10 @@ export default function SeanceAdd(params){
         </div>
     )
 }
+
+/*SeanceAdd.propTypes = {
+    data: PropTypes.instanceOf(Date).isRequired,
+    godzina: PropTypes.string.isRequired,
+    salaID: PropTypes.number.isRequired,
+    filmID: PropTypes.number.isRequired,
+}*/
