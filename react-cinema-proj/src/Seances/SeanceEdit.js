@@ -41,12 +41,12 @@ export function SeanceEdit(params) {
     }
     
     return (
-        <div class="edycja">
+        <div class="edycja2">
             <div class="field3"><input type="date" min={today}  autoComplete="false" id="date" placeholder={date} onChange={e => setDate(e.target.value)} /></div>
             <div class="field3"><input type="time" autoComplete="false" id="hour" placeholder={hour} onChange={e => setHour(e.target.value)} /></div>
-            <div class="field"><input autoComplete="false" id="roomId" placeholder={roomId} onChange={e => setRoomId(e.target.value)} /></div>
-            <div class="field"><input autoComplete="false" id="movieId" placeholder={movieId} onChange={e => setMovieId(e.target.value)} /></div>
-            <button class="button3" onClick={Edit}>Edytuj</button>
+            <div class="field3"><input autoComplete="false" id="roomId" placeholder={roomId} onChange={e => setRoomId(e.target.value)} /></div>
+            <div class="field3"><input autoComplete="false" id="movieId" placeholder={movieId} onChange={e => setMovieId(e.target.value)} /></div>
+            <button class="button7" onClick={Edit}>Edytuj</button>
             {edited === true ? <Navigate replace to="/" /> : ""}
         </div>
     )
