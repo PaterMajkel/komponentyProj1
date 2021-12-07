@@ -9,6 +9,11 @@ export function SeanceDate(){
     const movies = useSelector(state => state.movies) 
 
     function show(){
+      if(pickedDate===null || pickedDate.length<1){
+        alert("Wrong date")
+        return
+    }
+
         setSeancesToday(seances.filter(x=>+x.data.split('.')[0]===+pickedDate.split('-')[2] && +x.data.split('.')[1]===+pickedDate.split('-')[1]))
     }
 
