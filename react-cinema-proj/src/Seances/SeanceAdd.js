@@ -63,10 +63,10 @@ export default function SeanceAdd(params){
 
     return(
         <div class="adds"> 
-            <div class="field3"><input type="date"  min={today} autoComplete="false" id="date" placeholder="Data seansu" onChange={e => setDate(e.target.value)} required/></div>
-            <div class="field3"><input type="time" autoComplete="false" id="hour" placeholder="Godzina seansu" onChange={e => setHour(e.target.value)} required /></div>
+            <div class="field4"><input type="date"  min={today} autoComplete="false" id="date" placeholder="Data seansu" onChange={e => setDate(e.target.value)} required/></div>
+            <div class="field4"><input type="time" autoComplete="false" id="hour" placeholder="Godzina seansu" onChange={e => setHour(e.target.value)} required /></div>
             <div class="field2"><input autoComplete="false" id="roomId" placeholder="Numer sali" onChange={e => setRoomId(e.target.value)} required/></div>
-            <div class="field2"><input autoComplete="false" id="movieId" placeholder="Film" onChange={e => setMovieId(e.target.value)} required/></div>
+            <div class="field2"><input autoComplete="false" id="movieId" placeholder="Film ID" onChange={e => setMovieId(e.target.value)} required/></div>
 
             <button class="button5" onClick={add}>Dodaj</button>
         </div>

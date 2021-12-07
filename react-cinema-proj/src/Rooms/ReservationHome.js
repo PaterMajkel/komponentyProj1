@@ -4,7 +4,7 @@ export default function ReservationHome()
 {
     return(
         <div>
-            <p>Please select your seats and input a valid email into the input box</p>
+            <p class="movecent">Proszę wybrać miejsca które chce się kupić oraz wpisać email w polu</p>
             <Outlet/>
         </div>
     )
