@@ -135,7 +135,7 @@ export function Reservation60(reserv){
             Zostało wybrane <span id="count">{count}</span> miejsc
         </p>
         
-        <button className='button1' disabled={!email.length>0} onClick={() => {onSubmit()}}>Zarezerwuj</button>
+        <button className='button5' disabled={!email.length>0} onClick={() => {onSubmit()}}>Zarezerwuj</button>
     </div>)
 }
 
