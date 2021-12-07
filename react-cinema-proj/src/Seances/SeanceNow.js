@@ -15,7 +15,7 @@ export function SeanceNow(){
     }, [])
 
     function show(){
-        setSeancesToday(seances.filter(x=>+x.data.split('.')[0]===today.getUTCDate() && +x.data.split('.')[1]===today.getUTCMonth()+1 && x.godzina>=today.getUTCHours))
+        setSeancesToday(seances.filter(x=>+x.data.split('.')[0]===today.getUTCDate() && +x.data.split('.')[1]===today.getUTCMonth()+1 && +x.godzina>=today.getUTCHours))
     }
 
     return(
