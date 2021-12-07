@@ -23,8 +23,8 @@
       "godzina": "18:30",
       "salaID": 1,
       "filmID": 1,
-      "liczba_sprzedanych_biletow": "12",
-      "liczba_dostepnych_miejsc": "78"
+      "liczba_sprzedanych_biletow": "19",
+      "liczba_dostepnych_miejsc": "71"
     },
     {
       "id": 2,
@@ -88,6 +88,60 @@
       "liczba_sprzedanych_biletow": 0,
       "liczba_dostepnych_miejsc": "60",
       "id": 8
+    },
+    {
+      "data": "08.12.2021",
+      "godzina": "16:13",
+      "salaID": 1,
+      "filmID": 1,
+      "liczba_sprzedanych_biletow": 0,
+      "liczba_dostepnych_miejsc": "90",
+      "id": 9
+    },
+    {
+      "data": "08.12.2021",
+      "godzina": "16:40",
+      "salaID": 1,
+      "filmID": 1,
+      "liczba_sprzedanych_biletow": 0,
+      "liczba_dostepnych_miejsc": "90",
+      "id": 10
+    },
+    {
+      "data": "24.12.2021",
+      "godzina": "16:58",
+      "salaID": 1,
+      "filmID": 1,
+      "liczba_sprzedanych_biletow": 0,
+      "liczba_dostepnych_miejsc": "90",
+      "id": 11
+    },
+    {
+      "data": "07.12.2021",
+      "godzina": "18:18",
+      "salaID": 1,
+      "filmID": 1,
+      "liczba_sprzedanych_biletow": 0,
+      "liczba_dostepnych_miejsc": "90",
+      "id": 12
+    },
+    {
+      "data": "08.12.2021",
+      "godzina": "18:34",
+      "salaID": 1,
+      "filmID": 1,
+      "liczba_sprzedanych_biletow": 0,
+      "liczba_dostepnych_miejsc": "90",
+      "id": 13
+    },
+    {
+      "data": "16.12.2021",
+      "godzina": "18:37",
+      "salaID": 1,
+      "filmID": 1,
+      "liczba_sprzedanych_biletow": 0,
+      "liczba_dostepnych_miejsc": "90",
+      "id": 14
     }
   ],
   "Film": [
@@ -125,6 +179,20 @@
       "plakat": "https://fwcdn.pl/fpo/05/22/30522/7490271_1.3.jpg",
       "opis": "Leslie Nielsen",
       "id": 5
+    },
+    {
+      "tytul": "12 Mostów",
+      "czas_trwania": "33 min",
+      "plakat": "https://www.weekendowo.pl/upload/images/22cdca4530a236c15df8243311bde875.jpg",
+      "opis": "policjant robi pif paf",
+      "id": 6
+    },
+    {
+      "tytul": "Grobowiec Świetlików",
+      "czas_trwania": "73 min",
+      "plakat": "https://fwcdn.pl/fpo/46/55/34655/7589836.3.jpg",
+      "opis": "Historia dzieci próbujących przeżyć podczas ww2",
+      "id": 7
     }
   ],
   "Bilet": [
@@ -355,6 +423,48 @@
       "seansID": 7,
       "numer_Miejsca": "59",
       "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 39,
+      "seansID": 1,
+      "numer_Miejsca": "6",
+      "mail_kupujacego": "filip.andrejuk@gmail.com"
+    },
+    {
+      "id": 40,
+      "seansID": 1,
+      "numer_Miejsca": "7",
+      "mail_kupujacego": "filip.andrejuk@gmail.com"
+    },
+    {
+      "id": 41,
+      "seansID": 1,
+      "numer_Miejsca": "21",
+      "mail_kupujacego": "mail@gmail.com"
+    },
+    {
+      "id": 42,
+      "seansID": 1,
+      "numer_Miejsca": "37",
+      "mail_kupujacego": "mail@gmail.com"
+    },
+    {
+      "id": 43,
+      "seansID": 1,
+      "numer_Miejsca": "35",
+      "mail_kupujacego": "mail@gmail.com"
+    },
+    {
+      "id": 44,
+      "seansID": 1,
+      "numer_Miejsca": "34",
+      "mail_kupujacego": "mail@gmail.com"
+    },
+    {
+      "id": 45,
+      "seansID": 1,
+      "numer_Miejsca": "36",
+      "mail_kupujacego": "mail@gmail.com"
     }
   ]
 }
