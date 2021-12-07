@@ -10,7 +10,6 @@ export const reloadSalas = () => (dispatch)=>{
 }
 
 export const reloadSalasAction = (data) => {
-  console.log(data)
   return {
       type: "RELOADSALAS",
       payload: data

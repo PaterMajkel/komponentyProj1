@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Seance } from './Seance'
 import { useSelector, useDispatch } from 'react-redux'
 import { reloadSeances } from '../Redux/Actions/seanceActions'
@@ -8,11 +8,12 @@ export function Seances(){
     const seances = useSelector(seancesState => seancesState.seances)
     const movies = useSelector(moviesState=> moviesState.movies)
     const dispatch = useDispatch()
-    if(seances===undefined)
-      dispatch(reloadSeances())
-    if(movies===undefined)
-      dispatch(reloadMovies())
-    console.log(seances)
+    useEffect(()=>{
+      if(seances===undefined)
+        dispatch(reloadSeances())
+      if(movies===undefined)
+        dispatch(reloadMovies())
+    })
     return(
         <div>
             {seances.map(seance => {const movie=movies.find(p=> p.id===seance.filmID)

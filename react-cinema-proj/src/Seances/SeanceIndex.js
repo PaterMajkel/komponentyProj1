@@ -1,11 +1,15 @@
 import { Link, useParams, Outlet, Navigate, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Seance } from './Seance'
 import PropTypes from 'prop-types';
+import { reloadMovies } from '../Redux/Actions/movieActions';
+import { reloadSeances } from '../Redux/Actions/seanceActions';
 
 export function SeanceIndex(params) {
     const [deleted, setDeleted] = useState(false);
+    const movies = useSelector(state => state.movies)
+    const seances = useSelector(state => state.seances);
     let { seanceId } = useParams();
     const salas = useSelector(state=>state.salas)
     function deleteSeance() {
@@ -13,8 +17,6 @@ export function SeanceIndex(params) {
         setDeleted(true);
     }
 
-    const movies = useSelector(state => state.movies)
-    const seances = useSelector(state => state.seances);
     const seance = seances.find(s => s.id === +seanceId);
     const movie = movies.find(p => p.id === seance.filmID)
     return (

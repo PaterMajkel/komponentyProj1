@@ -34,7 +34,6 @@ function App() {
     dispatch(editMovie(movie))
   }
   function getData() {
-    console.log("here")
     dispatch(reloadMovies())
     dispatch(reloadSeances())
     dispatch(reloadTickets())
@@ -73,7 +72,7 @@ function App() {
         </nav>
       </div>
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path='/' element={<Home />}/>
         <Route path='seances' element={<SeancesHome />}>
           <Route path='date' element={<SeanceDate/>}/>
           <Route path='now' element={<SeanceNow/>}/>

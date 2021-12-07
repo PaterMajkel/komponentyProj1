@@ -36,8 +36,6 @@ export function MovieEdit(params) {
                 return
             }
         params.edit({ id: +movieId, tytul: title, opis: description, czas_trwania: length, plakat: poster })
-        console.log(movies)
-        //navigate(-1)
         setEdited(true)
     }
     function isValidHttpUrl(string) {//funkcja sprawdza poprawność czy to link 

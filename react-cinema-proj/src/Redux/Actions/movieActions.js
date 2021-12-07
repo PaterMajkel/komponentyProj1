@@ -11,7 +11,6 @@ export const reloadMovies = () => (dispatch)=>{
 }
 
 export const reloadMoviesAction = (data) => {
-    console.log(data)
     return {
         type: "RELOADMOVIES",
         payload: data
@@ -59,7 +58,6 @@ export const editMovie = (movie) => (dispatch)=>{
 }
 
 export const editMovieAction = (movie) => {
-  console.log(movie)
     return {
         type: "EDITMOVIE",
         payload: movie

@@ -54,11 +54,20 @@
       "liczba_dostepnych_miejsc": "90"
     },
     {
+      "id": 5,
+      "data": "31.12.2021",
+      "godzina": "20:15",
+      "salaID": 1,
+      "filmID": 2,
+      "liczba_sprzedanych_biletow": "0",
+      "liczba_dostepnych_miejsc": "90"
+    },
+    {
       "data": "07.12.2021",
       "godzina": "08:54",
       "salaID": 1,
       "filmID": 1,
-      "liczba_sprzedanych_biletow": 0,
+      "liczba_sprzedanych_biletow": "0",
       "liczba_dostepnych_miejsc": "90",
       "id": 6
     },
@@ -84,10 +93,10 @@
   "Film": [
     {
       "id": 1,
-      "tytul": "Bruh",
-      "opis": "Sit irure pariatur proident aliqua consectetur aute labore veniam consectetur eiusmod sunt Lorem aliquip deserunt.",
-      "czas_trwania": "140",
-      "plakat": "https://ftmp.helios.pl/Get/file/mvpstr/21364/1636372023"
+      "tytul": "Dom Gucci",
+      "czas_trwania": "120",
+      "plakat": "https://ftmp.helios.pl/Get/file/mvpstr/21364/1636372023",
+      "opis": "Sit irure pariatur proident aliqua consectetur aute labore veniam consectetur eiusmod sunt Lorem aliquip deserunt."
     },
     {
       "id": 2,
@@ -105,7 +114,7 @@
     },
     {
       "id": 4,
-      "tytul": "Bruh",
+      "tytul": "Bruhhhh",
       "opis": "x",
       "czas_trwania": "270",
       "plakat": "https://ftmp.helios.pl/Get/file/mvpstr/21364/1636372023"

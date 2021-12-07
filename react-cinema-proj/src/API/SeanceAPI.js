@@ -8,7 +8,6 @@ export async function getSeances(){
     let data = []
     await Axios.get(url+'Seans').then((res)=>{
         data=res.data
-        console.log(data)
         }).catch(error=>{
     return error
     });
@@ -19,7 +18,6 @@ export async function getSalas(){
     let data = []
     await Axios.get(url+'Sala').then((res)=>{
         data=res.data
-        console.log(data)
         }).catch(error=>{
     return error
     });

@@ -9,14 +9,10 @@ export function SeanceDate(){
     const movies = useSelector(state => state.movies) 
 
     function show(){
-        console.log(pickedDate.split('-'))
-        console.log(seances.filter(x=>x.data.split('.')[0]===pickedDate.split('-')[2]))
         setSeancesToday(seances.filter(x=>+x.data.split('.')[0]===+pickedDate.split('-')[2] && +x.data.split('.')[1]===+pickedDate.split('-')[1]))
-        console.log(seancesToday)
     }
 
     var today = new Date();
-    console.log(today.getDate())
     today=today.toISOString().substring(0, 10);
     return (<div class="movecenter">
           <div><p>Wybierz Datę z którego dnia chcesz zobaczyć seanse</p></div> 
@@ -24,7 +20,7 @@ export function SeanceDate(){
           <div><button class="button5" onClick={show}>Pokaż</button></div>
           <div>
           {seancesToday.map(seance => {const movie=movies.find(p=> p.id===seance.filmID)
-            return (<Seance plakat={movie.plakat} tytul={movie.tytul} wolne_miejsca={seance.liczba_dostepnych_miejsc-seance.liczba_sprzedanych_biletow}
+            return (<Seance plakat={movie.plakat} tytul={movie.tytul} wolne_miejsca={seance.liczba_dostepnych_miejsc}
             data={seance.data} filmID={seance.filmID} id={seance.id}></Seance>)})}
           </div>
     </div>)

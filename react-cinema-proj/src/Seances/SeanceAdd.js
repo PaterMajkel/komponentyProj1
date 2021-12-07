@@ -1,18 +1,18 @@
 import { useState } from "react"
-import { Navigate } from "react-router-dom"
+import { Navigate, useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import PropTypes from 'prop-types'
 
 export default function SeanceAdd(params){
-    const [added, setAdded] = useState(false)
     const [data, setDate] = useState('');
     const [godzina, setHour] = useState('');
     const [salaID, setRoomId] = useState('');
     const [filmID, setMovieId] = useState('');
     const seances = useSelector(state => state.seances)
     const salas = useSelector(state => state.salas)
+    const movies = useSelector(state => state.movies)
     var today = new Date();
-    //today=today.toISOString().substring(0, 10);//nie działa wrr
+    const navigate = useNavigate()
     function add(){
         if(+data.split('-')[2]<today.getUTCDate())
         {
@@ -32,10 +32,22 @@ export default function SeanceAdd(params){
             return
             }
         }
-        if(+data.split('-')[0]===today.getUTCFullYear)
+        if(+data.split('-')[0]>today.getUTCFullYear)
+        {
+            alert("Wrong year")
+            return
+        }
+        if(movies.find(m=> m.id === +filmID)===undefined)
+        {
+            alert("That movie doesn't exist")
+        }
+        if(salas.find(m=> m.id === +salaID)===undefined)
+        {
+            alert("That room doesn't exist")
+        }
         console.log("DEBUG: " + seances[seances.length-1]);
         params.addSeance({id: +seances[seances.length-1].id, data: data.split('-')[2]+"."+data.split('-')[1]+"."+data.split('-')[0], godzina,salaID: +salaID,filmID: +filmID, liczba_sprzedanych_biletow: 0, liczba_dostepnych_miejsc: salas.find(s=>s.id===+salaID).ilosc_miejsc});
-        setAdded(true);
+        navigate(-1)
     }
 
     return(
@@ -46,7 +58,6 @@ export default function SeanceAdd(params){
             <div class="field2"><input autoComplete="false" id="movieId" placeholder="Film" onChange={e => setMovieId(e.target.value)} required/></div>
 
             <button class="button5" onClick={add}>Dodaj</button>
-            { added===true ? <Navigate replace to="/" /> : ""}
         </div>
     )
 }

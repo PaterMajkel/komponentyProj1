@@ -11,7 +11,6 @@ export const reloadTickets = () => (dispatch) => {
 }
 
 export const reloadAction = (data) => {
-    console.log(data);
     return {
         type: "RELOADTICKETS",
         payload: data
@@ -43,7 +42,6 @@ export const addTicket = (tickets) => (dispatch) => {
 }
 
 export const addTicketAction = (action) => {
-    console.log(action)
     return {
         type: "ADDTICKET",
         payload: action

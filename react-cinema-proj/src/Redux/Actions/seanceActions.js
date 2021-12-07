@@ -11,7 +11,6 @@ export const reloadSeances = () => (dispatch) => {
 }
 
 export const reloadSeancesAction = (data) => {
-    console.log(data);
     return {
         type: "RELOADSEANCES",
         payload: data
@@ -64,7 +63,6 @@ export const addSeanceAction = (seance) => {
 
 // PUTs
 export const editSeance = (seance) => (dispatch) => {
-    console.log(seance)
     return putSeance(seance)
         .then(data => { dispatch(editSeanceAction(seance)); })
         .catch(err => { throw(err); });

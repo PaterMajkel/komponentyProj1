@@ -1,8 +1,9 @@
 import { Link, useParams, Outlet, Navigate } from 'react-router-dom'
-import { useSelector } from 'react-redux';
-import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Movie } from './Movie';
+import { reloadMovies } from '../Redux/Actions/movieActions';
 import './Movie.css';
 export function MovieIndex(params) {
     const movies = useSelector(state => state.movies)
@@ -12,11 +13,15 @@ export function MovieIndex(params) {
     const [movie, setMovie] = useState(movies.find(p => p.id === +movieId))
     const [seancesOfMovies, setSeancesOfMovies] = useState(seances.filter(seance => seance.filmID === +movieId))
     function deleteMovie() {
+        if(seances.find(x=> x.filmID===+movieId))
+            {
+                alert("there is a seance of this movie")
+                return;
+            }
         params.deleteMovie(movieId)
         setDeleted(true)
     }
     function prepareData() {
-        console.log(seancesOfMovies)
         let dates = seancesOfMovies.map(seance => seance.data)
         let data = []
         for (let i of dates) {

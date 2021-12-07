@@ -5,7 +5,6 @@ function tickets(state = [], action) {
         case "DELETETICKETBYID":
             return state.filter(s => s.id !== action.payload);
         case "ADDTICKET":
-            console.log(state)
             return state.push(...action.payload);
         default:
             return state;

@@ -21,7 +21,7 @@ export function SeanceNow(){
     return(
         <div>
           {seancesToday.map(seance => {const movie=movies.find(p=> p.id===seance.filmID)
-            return (<Seance plakat={movie.plakat} tytul={movie.tytul} wolne_miejsca={seance.liczba_dostepnych_miejsc-seance.liczba_sprzedanych_biletow}
+            return (<Seance plakat={movie.plakat} tytul={movie.tytul} wolne_miejsca={seance.liczba_dostepnych_miejsc}
             data={seance.data} filmID={seance.filmID} id={seance.id} godzina={seance.godzina}></Seance>)})}
           </div>
     )

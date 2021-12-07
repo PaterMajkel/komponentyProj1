@@ -23,7 +23,6 @@ export function Reservation90(reserv){
         return () => {
         }
     }, [])
-    console.log(tickets)
     function updateSelectedCount(num, id){
 
         setCount(count+parseInt(num))
