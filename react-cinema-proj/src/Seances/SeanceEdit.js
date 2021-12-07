@@ -18,19 +18,25 @@ export function SeanceEdit(params) {
     var today = new Date();
     today=today.toISOString().substring(0, 10);//nie działa wrr
     function Edit() {
-        if(+date<today.getUTCDate())
+        if(+date.split('-')[2]<today.getUTCDate())
         {
-            alert("wrong date")
+            alert("Wrong date")
             return
         }
-        if(+date===today.getUTCDate())
+        if(+date.split('-')[1]<today.getUTCMonth()+1)
         {
-            if(+hour<today.getUTCHours())
+            alert("Wrong date")
+            return
+        }
+        if(+date.split('-')[2]===today.getUTCDate())
+        {
+            if(+hour.split(':')[0]<today.getUTCHours())
             {
-                alert("wrong time")
+                alert("Wrong time")
             return
             }
         }
+        if(+date.split('-')[0]===today.getUTCFullYear)
         params.edit({id: seanceId, data: date, godzina: hour, salaID: roomId, filmID: movieId, liczba_sprzedanych_biletow: soldTickets, liczba_dostepnych_miejsc: availableTickets});
         setEdited(true);
     }
