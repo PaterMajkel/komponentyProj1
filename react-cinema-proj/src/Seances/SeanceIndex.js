@@ -1,4 +1,4 @@
-import { Link, useParams, Outlet, Navigate } from 'react-router-dom'
+import { Link, useParams, Outlet, Navigate, useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { Seance } from './Seance'
@@ -9,8 +9,9 @@ export function SeanceIndex(params) {
     const [deleted, setDeleted] = useState(false);
     let { seanceId } = useParams();
     const salas = useSelector(state=>state.salas)
+    const navigate = useNavigate()
     function deleteSeance() {
-        params.deleteSeance(seanceId);
+        params.deleteSeance(+seanceId);
         setDeleted(true);
     }
 
@@ -27,10 +28,10 @@ export function SeanceIndex(params) {
                 <div><Link to={`reservation/${salas.find(sala=>sala.id===seance.salaID).ilosc_miejsc}`}><button class="button1">Wybierz miejsca</button></Link></div>
                 <div><Link to={`edit`}><button class="button1">Edit</button></Link></div>
                 <div>{params.deleteSeance !== undefined ? <button class="button2" onClick={deleteSeance}>Usuń</button> : ""}</div>
-                {deleted === true ? <Navigate replace to="/" /> : ""}
             </div>
         </div>
             <Outlet />
+                {deleted === true ? <Navigate replace to="/" /> : ""}
         </div>
     )
 }

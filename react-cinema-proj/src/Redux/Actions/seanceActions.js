@@ -35,9 +35,11 @@ export const getSeanceById = (id) => {
 // DELETEs
 export const deleteSeanceById = (id) => (dispatch)=>{
     return deleteSeance(id) 
-        .then(() => { dispatch(deleteSeanceById(id)); })
+        .then(() => { dispatch(deleteSeanceByIdAction(id)); })
         .catch(err => { throw(err); });
 }
+
+
 
 export const deleteSeanceByIdAction = (id) => {
     return {

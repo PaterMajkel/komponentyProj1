@@ -12,24 +12,31 @@ export default function SeanceAdd(params){
     const [liczba_sprzedanych_biletow, setSoldTickets] = useState('');
     const [liczba_dostepnych_miejsc, setAvailableTickets] = useState('');
     const seances = useSelector(state => state.seances)
-    var today = new Date();
+    const salas = useSelector(state => state.salas)
+    let today = new Date();
     today=today.toISOString().substring(0, 10);//nie działa wrr
     function add(){
-        if(data<today.getUTCDate())
+        if(+data.split('-')[2]<today.getUTCDate)
         {
             alert("wrong date")
             return
         }
-        if(data===today.getUTCDate())
+        if(+data.split('-')[1]<today.getUTCMonth+1)
         {
-            if(godzina<today.getUTCHours())
+            alert("wrong date")
+            return
+        }
+        if(+data.split('-')[2]===today.getUTCDate)
+        {
+            if(+godzina.split(':')[0]<today.getUTCHours)
             {
                 alert("wrong time")
             return
             }
         }
+        if(+data.split('-')[0]===today.getUTCFullYear)
         console.log("DEBUG: " + seances[seances.length-1]);
-        params.addSeance({id: +seances[seances.length-1].id, data, godzina,salaID: +salaID,filmID: +filmID, liczba_sprzedanych_biletow: 0, liczba_dostepnych_miejsc});
+        params.addSeance({id: +seances[seances.length-1].id, data, godzina,salaID: +salaID,filmID: +filmID, liczba_sprzedanych_biletow: 0, liczba_dostepnych_miejsc: salas.find(s=>s.id===+salaID).ilosc_miejsc});
         setAdded(true);
     }
 

@@ -52,6 +52,15 @@
       "filmID": 2,
       "liczba_sprzedanych_biletow": "0",
       "liczba_dostepnych_miejsc": "90"
+    },
+    {
+      "id": 5,
+      "data": "31.12.2021",
+      "godzina": "20:15",
+      "salaID": 1,
+      "filmID": 2,
+      "liczba_sprzedanych_biletow": "0",
+      "liczba_dostepnych_miejsc": "90"
     }
   ],
   "Film": [

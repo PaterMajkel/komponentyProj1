@@ -33,13 +33,17 @@ export async function putSeance(seance) {
         .catch(err => { return err; });
 }
 
-export async function deleteSeance(id) {
+export async function deleteSeance(id){
     if(!isNumeric(id)) return 'API Error: id';
-
-    await Axios.delete(url + "Seans/" + id)
-        .then((res) => { return res; })
-        .catch((err) => { return err; });
+    
+    await Axios.delete(url+'Seans/'+ id).then((res)=>{
+        return res
+        }).catch(error=>{
+    return error
+    });
 }
+
+
 
 export async function postSeance(seance) {
     await Axios.post(url + "Seans", {
