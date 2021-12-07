@@ -58,7 +58,7 @@ export default function SeanceAdd(params){
         }
         console.log("DEBUG: " + seances[seances.length-1]);
         params.addSeance({id: +seances[seances.length-1].id, data: data.split('-')[2]+"."+data.split('-')[1]+"."+data.split('-')[0], godzina,salaID: +salaID,filmID: +filmID, liczba_sprzedanych_biletow: 0, liczba_dostepnych_miejsc: salas.find(s=>s.id===+salaID).ilosc_miejsc});
-        navigate(-1)
+        navigate(-2)
     }
 
     return(
