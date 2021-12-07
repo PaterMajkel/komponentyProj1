@@ -1,5 +1,4 @@
-import { Link, Outlet } from 'react-router-dom'
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import {Movie} from './Movie'
 import { useSelector, useDispatch } from 'react-redux'
 import { reloadMovies } from '../Redux/Actions/movieActions'

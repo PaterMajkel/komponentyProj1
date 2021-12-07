@@ -1,5 +1,4 @@
 import { deleteTicket, getTickets, postTicket } from "../../API/TicketAPI"
-import { deleteSeanceByIdAction } from "./seanceActions";
 
 export const reloadTickets = () => (dispatch) => {
     return getTickets()

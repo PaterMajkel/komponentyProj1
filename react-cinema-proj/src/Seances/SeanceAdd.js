@@ -9,8 +9,6 @@ export default function SeanceAdd(params){
     const [godzina, setHour] = useState('');
     const [salaID, setRoomId] = useState('');
     const [filmID, setMovieId] = useState('');
-    const [liczba_sprzedanych_biletow, setSoldTickets] = useState('');
-    const [liczba_dostepnych_miejsc, setAvailableTickets] = useState('');
     const seances = useSelector(state => state.seances)
     const salas = useSelector(state => state.salas)
     var today = new Date();

@@ -2,14 +2,12 @@ import { Link, useParams, Outlet, Navigate, useNavigate } from 'react-router-dom
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { Seance } from './Seance'
-import { Movie } from '../Movies/Movie';
 import PropTypes from 'prop-types';
 
 export function SeanceIndex(params) {
     const [deleted, setDeleted] = useState(false);
     let { seanceId } = useParams();
     const salas = useSelector(state=>state.salas)
-    const navigate = useNavigate()
     function deleteSeance() {
         params.deleteSeance(+seanceId);
         setDeleted(true);
@@ -22,7 +20,7 @@ export function SeanceIndex(params) {
     return (
         <div>
         <div class="all">
-            <Seance plakat={movie.plakat} tytul={movie.tytul} wolne_miejsca={seance.liczba_dostepnych_miejsc - seance.liczba_sprzedanych_biletow}
+            <Seance plakat={movie.plakat} tytul={movie.tytul} wolne_miejsca={seance.liczba_dostepnych_miejsc} godzina={seance.godzina}
                 data={seance.data} filmID={seance.filmID} id={seance.id} index={true}></Seance>
             <div class="editable">
                 <div><Link to={`reservation/${salas.find(sala=>sala.id===seance.salaID).ilosc_miejsc}`}><button class="button1">Wybierz miejsca</button></Link></div>

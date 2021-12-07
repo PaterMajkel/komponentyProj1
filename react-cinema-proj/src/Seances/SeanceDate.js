@@ -1,9 +1,6 @@
-import { Link, Outlet } from 'react-router-dom'
-import React, {useState, useEffect} from 'react'
+import React, {useState, } from 'react'
 import { Seance } from './Seance'
-import { useSelector, useDispatch } from 'react-redux'
-import { reloadSeances } from '../Redux/Actions/seanceActions'
-import { reloadMovies  } from '../Redux/Actions/movieActions' 
+import { useSelector } from 'react-redux'
 import './Seance.css'
 export function SeanceDate(){
     const [seancesToday, setSeancesToday] = useState([])

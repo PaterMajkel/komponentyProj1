@@ -1,19 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
-import React, { useState, useEffect } from 'react'
-import { Routes, Route, Link, matchPath } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Routes, Route} from 'react-router-dom'
 import { Home } from './Home'
 import { Seances } from './Seances/Seances'
 import { SeanceIndex } from './Seances/SeanceIndex'
 import { SeancesHome } from './Seances/SeancesHome'
-import Axios from 'axios'
 import { Movies } from './Movies/Movies'
 import { MoviesHome } from './Movies/MoviesHome'
 import { MovieIndex } from './Movies/MovieIndex'
 import { MovieEdit } from './Movies/MovieEdit'
 import { Reservation60 } from './Rooms/Reservation60'
 import { Reservation90 } from './Rooms/Reservation90'
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { reloadMovies, editMovie, deleteMovieById, addMovie } from './Redux/Actions/movieActions'
 import MovieAdd from './Movies/MovieAdd';
 import SeanceAdd from './Seances/SeanceAdd';

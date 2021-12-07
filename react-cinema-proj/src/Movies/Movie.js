@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './Movie.css'
 export function Movie(params){

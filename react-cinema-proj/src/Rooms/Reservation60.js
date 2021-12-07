@@ -1,4 +1,4 @@
-import { Link,Navigate, useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect} from 'react';
 import { reloadTickets } from '../Redux/Actions/ticketActions'
@@ -14,7 +14,6 @@ export function Reservation60(reserv){
     const tickets = useSelector(state=>state.tickets)
     const [takenSeats, setTakenSeats] = useState([])
     const seances = useSelector(state => state.seances)
-    const [submited, setSubmited] = useState(false)
     const dispatch = useDispatch()
     useEffect(() => {
         if(tickets===undefined)
@@ -68,7 +67,6 @@ export function Reservation60(reserv){
         tempSeance.liczba_dostepnych_miejsc=left.toString()
         reserv.editSeance(tempSeance)
        
-        setSubmited(true)
         navigate(-3)
     }
 

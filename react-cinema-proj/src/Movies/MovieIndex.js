@@ -1,7 +1,6 @@
 import { Link, useParams, Outlet, Navigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useState } from 'react'
-import { getMovieById } from '../Redux/Actions/movieActions';
 import PropTypes from 'prop-types'
 import { Movie } from './Movie';
 import './Movie.css';

@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import { isNumeric, isValidString, isValidDate } from '../ValiTools'
+import { isNumeric } from '../ValiTools'
 const url = 'http://localhost:3000/'
 
 // IMPLEMENTS: GET PUT POST DELETE

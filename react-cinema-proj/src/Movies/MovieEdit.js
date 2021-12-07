@@ -1,5 +1,5 @@
-import { useParams, Navigate, useNavigate } from 'react-router-dom'
-import { isNumeric, isValidString, isValidImgUrl, isValidDate, validateEmail} from '../ValiTools'
+import { useParams, Navigate,  } from 'react-router-dom'
+import { isValidString} from '../ValiTools'
 import PropTypes from 'prop-types'
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -7,7 +7,6 @@ import './Movie.css';
 
 export function MovieEdit(params) {
     let { movieId } = useParams();
-    const navigate = useNavigate();
     const movies = useSelector(state => state.movies)
     const movie = movies.find(p => p.id === +movieId)
 
@@ -54,7 +53,7 @@ export function MovieEdit(params) {
     }
     function iscorrectTitle(s)
     {
-        if((s.match(/^\d/) || s.charCodeAt(0)>=65 && s.charCodeAt(0)<=90) && s.length>1 )
+        if((s.match(/^\d/) || (s.charCodeAt(0)>=65 && s.charCodeAt(0)<=90)) && s.length>1 )
         {
             return true
         }

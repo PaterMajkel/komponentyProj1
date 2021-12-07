@@ -6,7 +6,7 @@ export function SeanceEdit(params) {
     let {seanceId} = useParams();
 
     const seances = useSelector(state => state.seances);
-    const seance = seances.find(s => s.id == seanceId);
+    const seance = seances.find(s => s.id === +seanceId);
 
     const [date, setDate] = useState(seance.data);
     const [hour, setHour] = useState(seance.godzina);
@@ -18,14 +18,14 @@ export function SeanceEdit(params) {
     var today = new Date();
     today=today.toISOString().substring(0, 10);//nie działa wrr
     function Edit() {
-        if(date<today.getUTCDate())
+        if(+date<today.getUTCDate())
         {
             alert("wrong date")
             return
         }
-        if(date==today.getUTCDate())
+        if(+date===today.getUTCDate())
         {
-            if(hour<today.getUTCHours())
+            if(+hour<today.getUTCHours())
             {
                 alert("wrong time")
             return

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Navigate } from "react-router-dom"
 import { useSelector } from "react-redux"
-import { isNumeric, isValidString, isValidImgUrl, isValidDate, validateEmail} from '../ValiTools'
+import { isValidString} from '../ValiTools'
 import PropTypes from 'prop-types';
 import './Movie.css';
 
@@ -50,7 +50,7 @@ export default function MovieAdd(params) {
     }
     function iscorrectTitle(s)
     {
-        if((s.match(/^\d/) || s.charCodeAt(0)>=65 && s.charCodeAt(0)<=90) && s.length>1 )
+        if((s.match(/^\d/) || (s.charCodeAt(0)>=65 && s.charCodeAt(0)<=90)) && s.length>1 )
         {
             return true
         }

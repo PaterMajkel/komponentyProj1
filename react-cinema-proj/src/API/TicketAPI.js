@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import { isNumeric, isValidString, isValidImgUrl, isValidDate, validateEmail} from '../ValiTools'
+import { isNumeric, isValidString, validateEmail} from '../ValiTools'
 
 const url = 'http://localhost:3000/'
 
