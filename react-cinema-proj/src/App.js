@@ -17,11 +17,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { reloadMovies, editMovie, deleteMovieById, addMovie } from './Redux/Actions/movieActions'
 import MovieAdd from './Movies/MovieAdd';
 import SeanceAdd from './Seances/SeanceAdd';
-import { addSeance, deleteSeanceById, editSeance } from './Actions/seanceActions';
+import { addSeance, deleteSeanceById, editSeance } from './Redux/Actions/seanceActions';
 import { reloadSeances } from './Redux/Actions/seanceActions';
 import { SeanceEdit } from './Seances/SeanceEdit';
 import { SeanceDate } from './Seances/SeanceDate';
 import { SeanceNow } from './Seances/SeanceNow';
+import { reloadSalas } from './Redux/Actions/SalaAction';
+import { addTicket, reloadTickets } from './Redux/Actions/ticketActions';
 import ReservationHome from './Rooms/ReservationHome'
 function App() {
   const dispatch = useDispatch()
@@ -36,7 +38,8 @@ function App() {
     console.log("here")
     dispatch(reloadMovies())
     dispatch(reloadSeances())
-
+    dispatch(reloadTickets())
+    dispatch(reloadSalas())
   }
 
   function deleteMovieApp(id) {
@@ -56,6 +59,9 @@ function App() {
   function editSeanceApp(seance) {
     dispatch(editSeance(seance))
   }
+  function addTicketAPP(ticket){
+    dispatch(addTicket(ticket))
+  }
   return (
     <div className="background">
       <div className="body">
@@ -64,8 +70,6 @@ function App() {
             <li><a class="nav-link" href="/">Erebus Cinema</a></li>
             <li><a class="nav-link" href="/seances">Seances</a></li>
             <li><a class="nav-link" href="/movies">Movies</a></li>
-            <li><a class="nav-link" href="/reservation60">Reservation60 /TODO</a></li>
-            <li><a class="nav-link" href="/reservation90">Reservation90 /TODO</a></li>
           </ul>
         </nav>
       </div>
@@ -78,8 +82,8 @@ function App() {
           <Route path='add' element={<SeanceAdd addSeance={addSeanceApp} />} />
           <Route path=':seanceId' element={<SeanceIndex deleteSeance={deleteSeanceApp} />}>
             <Route path='reservation' element={<ReservationHome/>}>
-              <Route path='60' element={<Reservation60 />} />
-              <Route path='90' element={<Reservation90 />} />
+              <Route path='60' element={<Reservation60 addTicket={addTicketAPP}  editSeance={editSeanceApp}/>} />
+              <Route path='90' element={<Reservation90 addTicket={addTicketAPP} editSeance={editSeanceApp}/>} />
             </Route>
             <Route path='edit' element={<SeanceEdit edit={editSeanceApp} />} />
           </Route>

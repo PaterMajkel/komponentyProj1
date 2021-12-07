@@ -9,10 +9,17 @@ function  movies(state = [], action) {
         return state.filter(p => p.id!==action.payload)      
     case "ADDMOVIE":
         return state.push(action.payload);
-    case "EDITMOVIEBYID":
-        let new_state=state
-        new_state[new_state.find((x) => x.id == action.payload.id)] = action.payload
-        return new_state
+    case "EDITMOVIE":
+      return state.map((item, index) => {
+        if (index !== action.payload.id) {
+          return item
+        }
+        return {
+          ...item,
+          ...action.payload
+        }
+      })
+
     default:
       return state
   }

@@ -1,30 +1,25 @@
 import { useState, useEffect } from "react"
+import PropTypes from 'prop-types'
 import './Reservation.css';
 
 export default function Seat(params){
-    const [isTaken, setIsTaken] = useState(params.taken)
     const [isReserved, setIsReserved] = useState(false)
 
     function ChangeCount(num){
         params.ChangeCount(num, params.id)
     }
     useEffect(() => {
-        setIsTaken(params.takenIds.includes(params.id))
         return () => {
         }
     }, [])
     
-    return(<div id={params.id} className="seat" onClick={e=>{
-        if(isTaken){
-            e.target.classList.toggle('occupied')
-            return '';
-        }
-        else{
+    return(<div id={params.id} className={params.isTaken?'seat occupied':'seat'}   onClick={e=>{
+        if(params.isTaken)
+            return;
             if(isReserved)
             {
                 setIsReserved(false)
                 e.target.classList.toggle('selected')
-                //zmienic wyglad
                 ChangeCount(-1, params.id)
             }
             else
@@ -32,10 +27,13 @@ export default function Seat(params){
                 e.target.classList.toggle('selected')
                 setIsReserved(true)
                 ChangeCount(+1,params.id)
-
-                //zmienic wyglad
             }
         }
         
-    }}></div>)
+    }>{params.id}</div>)
+}
+Seat.propTypes={
+    isTaken: PropTypes.bool,
+    id: PropTypes.string,
+    ChangeCount: PropTypes.func
 }

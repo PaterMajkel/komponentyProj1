@@ -15,7 +15,7 @@ export function Movies(){
     return(
         <div>
             {movies.map(movie => {
-            return (<Movie movie={movie}></Movie>)})}
+            return (<Movie plakat={movie.plakat} tytul={movie.tytul} opis={movie.opis} czas_trwania={movie.czas_trwania} id={movie.id}></Movie>)})}
         </div>
     )
 }

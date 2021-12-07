@@ -1,14 +1,15 @@
-import { useParams, Navigate } from 'react-router-dom'
+import { useParams, Navigate, useNavigate } from 'react-router-dom'
+import { isNumeric, isValidString, isValidImgUrl, isValidDate, validateEmail} from '../ValiTools'
+import PropTypes from 'prop-types'
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import './Movie.css';
-import PropTypes from 'prop-types';
 
 export function MovieEdit(params) {
     let { movieId } = useParams();
-
+    const navigate = useNavigate();
     const movies = useSelector(state => state.movies)
-    const movie = movies.find(p => p.id == movieId)
+    const movie = movies.find(p => p.id === +movieId)
 
     const [title, setTitle] = useState(movie.tytul)
     const [description, setDescription] = useState(movie.opis)
@@ -16,8 +17,28 @@ export function MovieEdit(params) {
     const [poster, setPoster] = useState(movie.plakat)
     const [edited, setEdited] = useState(false)
     function Edit() {
-
-        params.edit({ id: movieId, tytul: title, opis: description, czas_trwania: length + " min", plakat: poster })
+        if(!iscorrectTitle(title))
+        {
+            alert("Title must be uppercase, and/or should be longer")
+            return
+        }
+        if(!isValidHttpUrl(poster))
+        {
+            alert("Incorect html")
+            return
+        }
+        if(+length>300 || +length<30){
+            alert("Incorect length")
+            return
+        }
+        if(!isValidString(description))
+            {
+            alert("Incorect description")
+                return
+            }
+        params.edit({ id: +movieId, tytul: title, opis: description, czas_trwania: length, plakat: poster })
+        console.log(movies)
+        //navigate(-1)
         setEdited(true)
     }
     function isValidHttpUrl(string) {//funkcja sprawdza poprawność czy to link 
@@ -40,10 +61,10 @@ export function MovieEdit(params) {
     }
     return (
         <div class="edycja">
-            <div class="field"><input autoComplete="false" id="title" placeholder={movie.tytul} onChange={e => setTitle(e.target.value)} required></input></div>
-            <div class="field"><input autoComplete="false" id="description" placeholder="Streszczenie" onChange={e => setDescription(e.target.value)} required></input></div>
-            <div class="field3"><input type="number" min="0" max="300" autoComplete="false" id="length" placeholder="Czas trwania" onChange={e => setLength(e.target.value)} required></input></div>
-            <div class="field"><input autoComplete="false" id='poster' placeholder="Plakat" onChange={e => setPoster(e.target.value)} required></input></div>
+            <div class="field"><input autoComplete="false" id="title" placeholder={movie.tytul} onChange={e => setTitle(e.target.value)} ></input></div>
+            <div class="field"><input autoComplete="false" id="description" placeholder={movie.opis} onChange={e => setDescription(e.target.value)} ></input></div>
+            <div class="field3"><input type="number" min="0" max="300" autoComplete="false" placeholder={movie.czas_trwania} id="length" onChange={e => setLength(e.target.value)} ></input></div>
+            <div class="field"><input autoComplete="false" id='poster' placeholder={movie.plakat} onChange={e => setPoster(e.target.value)} ></input></div>
             <div><button class="button3" onClick={Edit}>Zmien </button></div>
             {edited === true ? <Navigate replace to="/" /> : ""}
         </div>
@@ -51,9 +72,6 @@ export function MovieEdit(params) {
 
 }
 
-/*MovieEdit.propTypes = {
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    length: PropTypes.number.isRequired,
-    poster: PropTypes.string.isRequired
-}*/
+MovieEdit.propTypes = {
+    edit: PropTypes.func
+}

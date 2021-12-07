@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 export function Seance(seance){
 
@@ -13,4 +14,26 @@ export function Seance(seance){
            
         </div>
     </div>)
+}
+
+const isValidImgUrl=function(props, propName, componentName) {
+    let url;
+
+    try {
+        url = new URL(props);
+    } catch (_) {
+        return false;
+    }
+
+    return url.protocol === "http:" || url.protocol === "https:";
+}
+
+Seance.propTypes={
+    plakat: isValidImgUrl,
+    tytul: PropTypes.string,
+    godzina: PropTypes.string,
+    filmId: PropTypes.number,
+    wolne_miejsca: PropTypes.string,
+    data: PropTypes.string,
+    id: PropTypes.number
 }

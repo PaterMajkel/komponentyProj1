@@ -59,6 +59,7 @@ export const editMovie = (movie) => (dispatch)=>{
 }
 
 export const editMovieAction = (movie) => {
+  console.log(movie)
     return {
         type: "EDITMOVIE",
         payload: movie

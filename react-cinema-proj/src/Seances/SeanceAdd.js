@@ -15,8 +15,21 @@ export default function SeanceAdd(params){
     var today = new Date();
     today=today.toISOString().substring(0, 10);//nie działa wrr
     function add(){
+        if(data<today.getUTCDate())
+        {
+            alert("wrong date")
+            return
+        }
+        if(data===today.getUTCDate())
+        {
+            if(godzina<today.getUTCHours())
+            {
+                alert("wrong time")
+            return
+            }
+        }
         console.log("DEBUG: " + seances[seances.length-1]);
-        params.addSeance({id: seances[seances.length-1].id, data, godzina, salaID, filmID, liczba_sprzedanych_biletow: 0, liczba_dostepnych_miejsc});
+        params.addSeance({id: +seances[seances.length-1].id, data, godzina,salaID: +salaID,filmID: +filmID, liczba_sprzedanych_biletow: 0, liczba_dostepnych_miejsc});
         setAdded(true);
     }
 
@@ -33,9 +46,6 @@ export default function SeanceAdd(params){
     )
 }
 
-/*SeanceAdd.propTypes = {
-    data: PropTypes.instanceOf(Date).isRequired,
-    godzina: PropTypes.string.isRequired,
-    salaID: PropTypes.number.isRequired,
-    filmID: PropTypes.number.isRequired,
-}*/
+SeanceAdd.propTypes = {
+    addSeance: PropTypes.func
+}

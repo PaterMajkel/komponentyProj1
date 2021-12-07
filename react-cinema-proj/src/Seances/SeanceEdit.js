@@ -1,7 +1,7 @@
+import PropTypes from 'prop-types';
 import { useParams, Navigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-import PropTypes from 'prop-types'
 export function SeanceEdit(params) {
     let {seanceId} = useParams();
 
@@ -18,29 +18,35 @@ export function SeanceEdit(params) {
     var today = new Date();
     today=today.toISOString().substring(0, 10);//nie działa wrr
     function Edit() {
+        if(date<today.getUTCDate())
+        {
+            alert("wrong date")
+            return
+        }
+        if(date==today.getUTCDate())
+        {
+            if(hour<today.getUTCHours())
+            {
+                alert("wrong time")
+            return
+            }
+        }
         params.edit({id: seanceId, data: date, godzina: hour, salaID: roomId, filmID: movieId, liczba_sprzedanych_biletow: soldTickets, liczba_dostepnych_miejsc: availableTickets});
         setEdited(true);
     }
     
     return (
         <div class="edycja">
-            <div class="field3"><input type="date" min={today}  autoComplete="false" id="date" placeholder="Data seansu" onChange={e => setDate(e.target.value)} /></div>
-            <div class="field3"><input type="time" autoComplete="false" id="hour" placeholder="Godzina seansu" onChange={e => setHour(e.target.value)} /></div>
-            <div class="field"><input autoComplete="false" id="roomId" placeholder="Numer sali" onChange={e => setRoomId(e.target.value)} /></div>
-            <div class="field"><input autoComplete="false" id="movieId" placeholder="Film" onChange={e => setMovieId(e.target.value)} /></div>
-            <div class="field"><input autoComplete="false" id="soldTickets" placeholder="Ilość sprzedanych biletów" onChange={e => setSoldTickets(e.target.value)} /></div>
-            <div class="field"><input autoComplete="false" id="availableTickets" placeholder="Dostępne bilety" onChange={e => setAvailableTickets(e.target.value)} /></div>
+            <div class="field3"><input type="date" min={today}  autoComplete="false" id="date" placeholder={date} onChange={e => setDate(e.target.value)} /></div>
+            <div class="field3"><input type="time" autoComplete="false" id="hour" placeholder={hour} onChange={e => setHour(e.target.value)} /></div>
+            <div class="field"><input autoComplete="false" id="roomId" placeholder={roomId} onChange={e => setRoomId(e.target.value)} /></div>
+            <div class="field"><input autoComplete="false" id="movieId" placeholder={movieId} onChange={e => setMovieId(e.target.value)} /></div>
             <button class="button3" onClick={Edit}>Edytuj</button>
             {edited === true ? <Navigate replace to="/" /> : ""}
         </div>
     )
 }
 
-/*SeanceEdit.propTypes = {
-    date: PropTypes.instanceOf(Date),
-    hour: PropTypes.string,
-    roomId: PropTypes.number,
-    movieId: PropTypes.number,
-    soldTickets: PropTypes.number,
-    availableTickets: PropTypes.number
-}*/
+SeanceEdit.propTypes = {
+    edit: PropTypes.func
+}

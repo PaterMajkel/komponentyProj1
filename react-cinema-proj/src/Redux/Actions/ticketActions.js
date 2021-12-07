@@ -1,7 +1,7 @@
 import { deleteTicket, getTickets, postTicket } from "../../API/TicketAPI"
 import { deleteSeanceByIdAction } from "./seanceActions";
 
-export const reloadT = () => (dispatch) => {
+export const reloadTickets = () => (dispatch) => {
     return getTickets()
         .then(data => {
             dispatch(reloadAction(data));
@@ -37,13 +37,14 @@ export const deleteTicketByIdAction = (id) => {
 
 // POSTs 
 
-export const addTicket = (ticket) => (dispatch) => {
-    return postTicket(ticket)
-        .then(() => { dispatch(addTicketAction(ticket)); })
+export const addTicket = (tickets) => (dispatch) => {
+    return postTicket(tickets)
+        .then(data => { dispatch(addTicketAction(tickets)); })
         .catch(err => { throw(err); });
 }
 
 export const addTicketAction = (action) => {
+    console.log(action)
     return {
         type: "ADDTICKET",
         payload: action

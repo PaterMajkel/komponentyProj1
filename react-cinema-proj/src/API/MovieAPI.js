@@ -18,7 +18,7 @@ export async function putMovie(movie){
 
     if(!isNumeric(movie.id)) return 'API Error: id';
     else if(!isValidString(movie.tytul)) return 'API Error: title';
-    else if(!isNumeric(movie.czas_trwania)) return 'API Error: length';
+    else if(!isValidString(movie.czas_trwania)) return 'API Error: length';
     else if(!isValidImgUrl(movie.plakat)) return 'API Error: poster';
     else if(!isValidString(movie.opis)) return 'API Error: description';
 
@@ -42,7 +42,7 @@ export async function deleteMovie(id){
 
 export async function postMovie(movie){
     if(!isValidString(movie.tytul)) return 'API Error: title';
-    else if(!isNumeric(movie.czas_trwania)) return 'API Error: length';
+    else if(!isValidString(movie.czas_trwania)) return 'API Error: length';
     else if(!isValidImgUrl(movie.plakat)) return 'API Error: poster';
     else if(!isValidString(movie.opis)) return 'API Error: description';
 

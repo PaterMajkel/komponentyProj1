@@ -25,6 +25,11 @@
   margin: 9px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
+  padding: 5px;
+  text-align: center;
+  text-size-adjust: auto;
+  font-size: larger;
+  font-family: system-ui;
 }
 .seat.occupied {
   background-color: #444451;
@@ -47,6 +52,10 @@
   background-color: #6feaf6;
 }
 .seat:nth-of-type(3)
+{
+  margin-right: 50px;
+}
+.seatPlace:nth-of-type(3)
 {
   margin-right: 50px;
 }
@@ -103,7 +112,7 @@ p.text span{
 {
   margin-right: 50px;
 }
-.seat2:nth-last-of-type(2) {
+.seatPlace2:nth-last-of-type(2) {
   margin-left: 50px;
 }
 .seat2:not(.occupied,.selected):hover{

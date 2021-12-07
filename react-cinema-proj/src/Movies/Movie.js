@@ -1,23 +1,45 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import './Movie.css'
 export function Movie(params){
 
  
     return(
-    <div> {params.movie===undefined ? '' : 
+    <div> {params===undefined ? '' : 
         <div class="film">
-            <img src={params.movie.plakat} alt="Movie poster"></img>
+            <img src={params.plakat} alt="Movie poster"></img>
             <div class="Opis">
-                <h4>{params.movie.tytul}</h4>
-                <p>Czas trwania: {params.movie.czas_trwania}</p>
-                <p>streszczenie: {params.movie.opis}</p>
-                {params.index? '' :  <p><Link to={`/movies/${params.movie.id}`}><button class="button3">Strona Filmu</button></Link></p>}
+                <h4>{params.tytul}</h4>
+                <p>Czas trwania: {params.czas_trwania} min</p>
+                <p>streszczenie: {params.opis}</p>
+                {params.index? '' :  <p><Link to={`/movies/${params.id}`}><button class="button3">Strona Filmu</button></Link></p>}
                 
             </div>
         </div>
         }
     </div>
     )
+}
+const isValidImgUrl=function(props, propName, componentName) {
+    let url;
+
+    try {
+        url = new URL(props);
+    } catch (_) {
+        return false;
+    }
+
+    return url.protocol === "http:" || url.protocol === "https:";
+}
+
+Movie.propTypes={
+    
+        plakat: isValidImgUrl,
+        opis: PropTypes.string,
+        czas_trwania: PropTypes.string,
+        id: PropTypes.number,
+        tytul: PropTypes.string,
+    index: PropTypes.bool
 }
 

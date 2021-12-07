@@ -1,32 +1,34 @@
-import { Link, useParams } from 'react-router-dom';
-import { useState } from 'react';
+import { Link,Navigate, useParams, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect} from 'react';
+import { reloadTickets } from '../Redux/Actions/ticketActions'
+import PropTypes from 'prop-types'
 import './Reservation.css';
 import Seat from './Seat';
 export function Reservation60(reserv){
+    let navigate = useNavigate();
     const [reservedSeats, setReservedSeats]=useState([])
     const [count, setCount] = useState(0)
-
-    //const container = Reservation60.querySelector('.container');
-    //const seats=document.querySelectorAll('.row.seat:not(.occupied)');
-    const {seanseId} = useParams();
-
-    function updateSelectedCount(){
-        const selectedSeats=document.querySelectorAll('.row .seat.selected')
-        const selectedSeatsCount=selectedSeats.length;
-        console.log(selectedSeatsCount)
-        setCount(count)
-    }
-
-    function updateSelectedCountTest(num, id){
-        console.log(num)
-        console.log(id)
+    const [email, setEmail] = useState("")
+    const {seanceId} = useParams();
+    const tickets = useSelector(state=>state.tickets)
+    const [takenSeats, setTakenSeats] = useState([])
+    const seances = useSelector(state => state.seances)
+    const [submited, setSubmited] = useState(false)
+    const dispatch = useDispatch()
+    useEffect(() => {
+        if(tickets===undefined)
+            dispatch(reloadTickets())
+        setTakenSeats(tickets.map(t => t.seansID===+seanceId? +t.numer_Miejsca : 0))
+        return () => {
+        }
+    }, [])
+    console.log(tickets)
+    function updateSelectedCount(num, id){
 
         setCount(count+parseInt(num))
-        console.log(count + " count")
         if(num<0)
         {
-            //akcja delete
-            console.log(reservedSeats.length)
             if(reservedSeats.length<=1 || reservedSeats.length===undefined)
                 {
                     setReservedSeats([])
@@ -35,16 +37,45 @@ export function Reservation60(reserv){
             setReservedSeats(reservedSeats.filter(x=> x!==id))
             return
         }
-        //akcja post
-        setReservedSeats(reservedSeats.push(id))
-        console.log(reservedSeats)
+        let temp = reservedSeats
+        temp.push(id)
+        setReservedSeats(temp)
+    }
+
+    function CheckIfMailIsValid(mail){
+        let validRegex = /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$/.test(mail)
+        if(validRegex)
+        {
+            setEmail(mail)
+            return
+        }
+        setEmail("")
+    }
+
+    function onSubmit(){
+        let index=1
+        let toSend=[]
+        for(let x of reservedSeats)
+        {
+           toSend.push({id:tickets[tickets.length-1].id+index++,seansID: +seanceId, numer_Miejsca: x.toString(), mail_kupujacego: email})
+        }
+        reserv.addTicket(toSend)
+        let tempSeance = seances.find(seance => seance.id===+seanceId)
+
+        let sold = parseInt(tempSeance.liczba_sprzedanych_biletow)+reservedSeats.length
+        let left = parseInt(tempSeance.liczba_dostepnych_miejsc)-parseInt(reservedSeats.length)
+        tempSeance.liczba_sprzedanych_biletow=sold.toString()
+        tempSeance.liczba_dostepnych_miejsc=left.toString()
+        reserv.editSeance(tempSeance)
+       
+        setSubmited(true)
+        navigate(-3)
     }
 
     return (
         <div className="center">
-        <div><button onClick={()=> console.log(reservedSeats + " " + count)}>xDDDDDDDDDD</button></div>
         <div>
-            <div class="field1"><input autoComplete="false" id="mail" placeholder="Mail" required/></div>
+            <div class="field1"><input autoComplete="false" id="mail" placeholder="Mail" type="email" onChange={e => {CheckIfMailIsValid(e.target.value)}} required/></div>
         </div>
         <ul className="showcase">
             <li>
@@ -65,316 +96,52 @@ export function Reservation60(reserv){
         <div className="container">
             <div className="ekran"></div>
             <div className="row">
-                <Seat id="1" ChangeCount={updateSelectedCountTest} takenIds={[]}/>
-                <div id="2" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="3" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="4" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="5" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="6" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="7" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="8" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="9" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="10" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
+                {Array(10).fill(0).map((x, index) => {
+                    return(
+                    <div className='seatPlace'><Seat id={(index+1)} isTaken={takenSeats.includes(index+1)} ChangeCount={updateSelectedCount} /></div>)})
+                }
+                
             </div>
             <div className="row">
-                <div id="11" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="12" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="13" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="14" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="15" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="16" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="17" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="18" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="19" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="20" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
+            {Array(10).fill(0).map((x, index) => {
+                    return(
+                    <div className='seatPlace'><Seat id={(index+11)} isTaken={takenSeats.includes(index+11)} ChangeCount={updateSelectedCount}/></div>)})
+                }
             </div>
             <div className="row">
-                <div id="21" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="22" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="23" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="24" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="25" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="26" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="27" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="28" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="29" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="30" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
+            {Array(10).fill(0).map((x, index) => {
+                    return(
+                    <div className='seatPlace'><Seat id={(index+21)} isTaken={takenSeats.includes(index+21)} ChangeCount={updateSelectedCount}/></div>)})
+                }
             </div>
             <div className="row">
-                <div id="31" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="32" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="33" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="34" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="35" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="36" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="37" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="38" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="39" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="40" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
+            {Array(10).fill(0).map((x, index) => {
+                    return(
+                    <div className='seatPlace'><Seat id={(index+31)} isTaken={takenSeats.includes(index+31)} ChangeCount={updateSelectedCount}/></div>)})
+                }
             </div>
             <div className="row">
-                <div id="41" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="42" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="43" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="44" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="45" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="46" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="47" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="48" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="49" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="50" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
+            {Array(10).fill(0).map((x, index) => {
+                    return(
+                    <div className='seatPlace'><Seat id={(index+41)} isTaken={takenSeats.includes(index+41)} ChangeCount={updateSelectedCount}/></div>)})
+                }
             </div>
             <div className="row">
-                <div id="51" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="52" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="53" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="54" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="55" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="56" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="57" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="58" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="59" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
-                <div id="60" className="seat" onClick={e=>{
-                    if(!e.target.classList.contains('occupied'))
-                    {e.target.classList.toggle('selected')
-                    updateSelectedCount()}
-                }}></div>
+            {Array(10).fill(0).map((x, index) => {
+                    return(
+                    <div className='seatPlace'><Seat id={(index+51)} isTaken={takenSeats.includes(index+51)} ChangeCount={updateSelectedCount}/></div>)})
+                }
             </div>
         </div>
         <p className="text">
             Zostało wybrane <span id="count">{count}</span> miejsc
         </p>
+        
+        <button className='button1' disabled={!email.length>0} onClick={() => {onSubmit()}}>Zarezerwuj</button>
     </div>)
+}
+
+Reservation60.propTypes = {
+    addTicket: PropTypes.func,
+    editSeance: PropTypes.func
 }

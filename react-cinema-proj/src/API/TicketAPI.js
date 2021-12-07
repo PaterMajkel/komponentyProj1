@@ -7,7 +7,7 @@ const url = 'http://localhost:3000/'
 
 export async function getTickets(){
     let data = []
-    await Axios.get(url+'Ticket').then((res)=>{
+    await Axios.get(url+'Bilet').then((res)=>{
         data=res.data
         }).catch(error=>{
     return error
@@ -18,23 +18,25 @@ export async function getTickets(){
 export async function deleteTicket(id) {
     if(!isNumeric(id)) return 'API Error: id';
     
-    await Axios.delete(url + "Ticket/" + id)
+    await Axios.delete(url + "Bilet/" + id)
         .then((res) => { return res; })
         .catch((err) => { return err; });
 }
-
-export async function postTicket(ticket) {
-    if(!isNumeric(ticket.id)) return 'API Error: id';
-    else if(!isNumeric(ticket.seansID)) return 'API Error: seansID';
-    else if(!isNumeric(ticket.numer_Miejsca)) return 'API Error: numer_Miejsca';
-    else if(!validateEmail(ticket.mail_kupujacego)) return 'API Error: wrong email';
-    else if(!isNumeric(ticket.Cena)) return 'API Error: cena';
-
-    await Axios.post(url + "Ticket", {   id: ticket.id,
-                                         seansID: ticket.seansID,
-                                         numer_Miejsca: ticket.numer_Miejsca,
-                                         mail_kupujacego: ticket.mail_kupujacego,
-                                         Cena: ticket.Cena })
-        .then( res => { return res; })
-        .catch( err => { return err; });
+export async function postTicket(tickets) {
+    for(let ticket of tickets)
+    {
+        if(!isNumeric(ticket.id)) return 'API Error: id';
+        else if(!isNumeric(ticket.seansID)) return 'API Error: seansID';
+        else if(!isValidString(ticket.numer_Miejsca)) return 'API Error: numer_Miejsca';
+        else if(!validateEmail(ticket.mail_kupujacego)) return 'API Error: wrong email';
+    
+        await Axios.post(url + "Bilet", {   id: ticket.id,
+                                             seansID: ticket.seansID,
+                                             numer_Miejsca: ticket.numer_Miejsca,
+                                             mail_kupujacego: ticket.mail_kupujacego,
+                                             Cena: ticket.Cena })
+            .then( res => { return res; })
+            .catch( err => { return err; });
+    }
+    
 }

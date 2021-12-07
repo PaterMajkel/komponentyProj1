@@ -4,7 +4,7 @@ import { Seance } from './Seance'
 import { useSelector, useDispatch } from 'react-redux'
 import { reloadSeances } from '../Redux/Actions/seanceActions'
 import { reloadMovies  } from '../Redux/Actions/movieActions' 
-export function Seances(props){
+export function Seances(){
     //const [seances, setSeances] = useState([])
     const seances = useSelector(seancesState => seancesState.seances)
     const movies = useSelector(moviesState=> moviesState.movies)
@@ -17,8 +17,8 @@ export function Seances(props){
     return(
         <div>
             {seances.map(seance => {const movie=movies.find(p=> p.id===seance.filmID)
-            return (<Seance plakat={movie.plakat} tytul={movie.tytul} wolne_miejsca={seance.liczba_dostepnych_miejsc-seance.liczba_sprzedanych_biletow}
-            data={seance.data} filmID={seance.filmID} id={seance.id}></Seance>)})}
+            return (<Seance plakat={movie.plakat} tytul={movie.tytul} wolne_miejsca={seance.liczba_dostepnych_miejsc}
+            data={seance.data} godzina={seance.godzina} filmID={seance.filmID} id={seance.id}></Seance>)})}
         </div>
     )
 }

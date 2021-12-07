@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Navigate } from "react-router-dom"
 import { useSelector } from "react-redux"
+import { isNumeric, isValidString, isValidImgUrl, isValidDate, validateEmail} from '../ValiTools'
 import PropTypes from 'prop-types';
 import './Movie.css';
 
@@ -13,8 +14,26 @@ export default function MovieAdd(params) {
     const movies = useSelector(state => state.movies)
 
     function add() {
-        console.log(movies[movies.length - 1]);
-
+        
+        if(!iscorrectTitle(tytul))
+        {
+            alert("Title must be uppercase, and/or should be longer")
+            return
+        }
+        if(!isValidHttpUrl(plakat))
+        {
+            alert("Incorect html")
+            return
+        }
+        if(+czas_trwania>300 || +czas_trwania<30){
+            alert("Incorect length")
+            return
+        }
+        if(!isValidString(opis))
+            {
+            alert("Incorect description")
+                return
+            }
         params.addMovie({ id: movies[movies.length - 1].id + 1, tytul, czas_trwania: czas_trwania + " min", plakat, opis })
         setAdded(true)
     }
@@ -48,9 +67,6 @@ export default function MovieAdd(params) {
     )
 }
 
-/*MovieAdd.propTypes = {
-    tytul: PropTypes.string.isRequired,
-    opis: PropTypes.string.isRequired,
-    czas_trwania: PropTypes.number.isRequired,
-    plakat: PropTypes.string.isRequired
-}*/
+MovieAdd.propTypes = {
+    addMovie: PropTypes.func
+}
