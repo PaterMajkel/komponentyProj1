@@ -54,15 +54,6 @@
       "liczba_dostepnych_miejsc": "90"
     },
     {
-      "id": 5,
-      "data": "31.12.2021",
-      "godzina": "20:15",
-      "salaID": 1,
-      "filmID": 2,
-      "liczba_sprzedanych_biletow": "0",
-      "liczba_dostepnych_miejsc": "90"
-    },
-    {
       "data": "07.12.2021",
       "godzina": "08:54",
       "salaID": 1,
@@ -70,15 +61,33 @@
       "liczba_sprzedanych_biletow": 0,
       "liczba_dostepnych_miejsc": "90",
       "id": 6
+    },
+    {
+      "data": "07.12.2021",
+      "godzina": "14:00",
+      "salaID": 2,
+      "filmID": 5,
+      "liczba_sprzedanych_biletow": "29",
+      "liczba_dostepnych_miejsc": "31",
+      "id": 7
+    },
+    {
+      "data": "08.12.2021",
+      "godzina": "08:00",
+      "salaID": 2,
+      "filmID": 2,
+      "liczba_sprzedanych_biletow": 0,
+      "liczba_dostepnych_miejsc": "60",
+      "id": 8
     }
   ],
   "Film": [
     {
       "id": 1,
-      "tytul": "Dom Gucci",
-      "czas_trwania": "120",
-      "plakat": "https://ftmp.helios.pl/Get/file/mvpstr/21364/1636372023",
-      "opis": "Sit irure pariatur proident aliqua consectetur aute labore veniam consectetur eiusmod sunt Lorem aliquip deserunt."
+      "tytul": "Bruh",
+      "opis": "Sit irure pariatur proident aliqua consectetur aute labore veniam consectetur eiusmod sunt Lorem aliquip deserunt.",
+      "czas_trwania": "140",
+      "plakat": "https://ftmp.helios.pl/Get/file/mvpstr/21364/1636372023"
     },
     {
       "id": 2,
@@ -96,10 +105,17 @@
     },
     {
       "id": 4,
-      "tytul": "Bruhhhh",
+      "tytul": "Bruh",
       "opis": "x",
       "czas_trwania": "270",
       "plakat": "https://ftmp.helios.pl/Get/file/mvpstr/21364/1636372023"
+    },
+    {
+      "tytul": "Szklanką po łapkach",
+      "czas_trwania": "210 min",
+      "plakat": "https://fwcdn.pl/fpo/05/22/30522/7490271_1.3.jpg",
+      "opis": "Leslie Nielsen",
+      "id": 5
     }
   ],
   "Bilet": [
@@ -155,6 +171,180 @@
       "id": 9,
       "seansID": 1,
       "numer_Miejsca": "47",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 10,
+      "seansID": 7,
+      "numer_Miejsca": "25",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 11,
+      "seansID": 7,
+      "numer_Miejsca": "24",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 12,
+      "seansID": 7,
+      "numer_Miejsca": "26",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 13,
+      "seansID": 7,
+      "numer_Miejsca": "27",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 14,
+      "seansID": 7,
+      "numer_Miejsca": "28",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 15,
+      "seansID": 7,
+      "numer_Miejsca": "29",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 16,
+      "seansID": 7,
+      "numer_Miejsca": "30",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 17,
+      "seansID": 7,
+      "numer_Miejsca": "37",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 18,
+      "seansID": 7,
+      "numer_Miejsca": "47",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 19,
+      "seansID": 7,
+      "numer_Miejsca": "57",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 20,
+      "seansID": 7,
+      "numer_Miejsca": "17",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 21,
+      "seansID": 7,
+      "numer_Miejsca": "7",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 22,
+      "seansID": 7,
+      "numer_Miejsca": "15",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 23,
+      "seansID": 7,
+      "numer_Miejsca": "5",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 24,
+      "seansID": 7,
+      "numer_Miejsca": "19",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 25,
+      "seansID": 7,
+      "numer_Miejsca": "9",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 26,
+      "seansID": 7,
+      "numer_Miejsca": "20",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 27,
+      "seansID": 7,
+      "numer_Miejsca": "10",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 28,
+      "seansID": 7,
+      "numer_Miejsca": "54",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 29,
+      "seansID": 7,
+      "numer_Miejsca": "44",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 30,
+      "seansID": 7,
+      "numer_Miejsca": "34",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 31,
+      "seansID": 7,
+      "numer_Miejsca": "55",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 32,
+      "seansID": 7,
+      "numer_Miejsca": "45",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 33,
+      "seansID": 7,
+      "numer_Miejsca": "35",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 34,
+      "seansID": 7,
+      "numer_Miejsca": "38",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 35,
+      "seansID": 7,
+      "numer_Miejsca": "48",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 36,
+      "seansID": 7,
+      "numer_Miejsca": "58",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 37,
+      "seansID": 7,
+      "numer_Miejsca": "60",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 38,
+      "seansID": 7,
+      "numer_Miejsca": "59",
       "mail_kupujacego": "micbo26@gmail.com"
     }
   ]
