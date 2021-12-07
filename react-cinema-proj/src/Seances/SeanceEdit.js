@@ -16,7 +16,6 @@ export function SeanceEdit(params) {
     const [availableTickets, setAvailableTickets] = useState(seance.liczba_dostepnych_miejsc);
     const [edited, setEdited] = useState(false);
     var today = new Date();
-    today=today.toISOString().substring(0, 10);//nie działa wrr
     function Edit() {
         if(+date.split('-')[2]<today.getUTCDate())
         {

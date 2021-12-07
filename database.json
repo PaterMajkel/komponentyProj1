@@ -61,6 +61,15 @@
       "filmID": 2,
       "liczba_sprzedanych_biletow": "0",
       "liczba_dostepnych_miejsc": "90"
+    },
+    {
+      "data": "07.12.2021",
+      "godzina": "08:54",
+      "salaID": 1,
+      "filmID": 1,
+      "liczba_sprzedanych_biletow": 0,
+      "liczba_dostepnych_miejsc": "90",
+      "id": 6
     }
   ],
   "Film": [
@@ -140,6 +149,12 @@
       "id": 8,
       "seansID": 1,
       "numer_Miejsca": "46",
+      "mail_kupujacego": "micbo26@gmail.com"
+    },
+    {
+      "id": 9,
+      "seansID": 1,
+      "numer_Miejsca": "47",
       "mail_kupujacego": "micbo26@gmail.com"
     }
   ]
