@@ -14,6 +14,13 @@ export default function SeanceAdd(params){
     var today = new Date();
     const navigate = useNavigate()
     function add(){
+        if(data===null){
+            alert("Wrong date")
+            return
+        }
+        if(godzina === null)
+        {alert("Wrong date")
+        return}
         if(+data.split('-')[2]<today.getUTCDate())
         {
             alert("Wrong date")
@@ -40,10 +47,14 @@ export default function SeanceAdd(params){
         if(movies.find(m=> m.id === +filmID)===undefined)
         {
             alert("That movie doesn't exist")
+            return
+
         }
         if(salas.find(m=> m.id === +salaID)===undefined)
         {
             alert("That room doesn't exist")
+            return
+
         }
         console.log("DEBUG: " + seances[seances.length-1]);
         params.addSeance({id: +seances[seances.length-1].id, data: data.split('-')[2]+"."+data.split('-')[1]+"."+data.split('-')[0], godzina,salaID: +salaID,filmID: +filmID, liczba_sprzedanych_biletow: 0, liczba_dostepnych_miejsc: salas.find(s=>s.id===+salaID).ilosc_miejsc});
